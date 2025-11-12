@@ -1,0 +1,905 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>源氏かるた</title>
+            <respStmt>
+               <resp>同志社大学文化情報学部</resp>
+               <persName>小澤翔瑛</persName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>IIIF マニフェスト: https://dgcl.doshisha.ac.jp/images/manifest/1/50000/MD00000288.json</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <facsimile sameAs="https://dgcl.doshisha.ac.jp/digital/collections/MD00000288/">
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p001"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p4">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86975.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86975.tiff"/>
+         <zone xml:id="zone_wd1_2mn_jgc" lry="1318" lrx="2095" uly="400" ulx="1368"/>
+         <zone xml:id="zone_sdm_2mn_jgc" lry="1304" lrx="1118" uly="386" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p002"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p5">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86976.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86976.tiff"/>
+         <zone xml:id="zone_nl3_2yl_3gc" lry="1322" lrx="2109" uly="390" ulx="1373"/>
+         <zone xml:id="zone_zhx_2yl_3gc" lry="1313" lrx="1145" uly="390" ulx="418"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p003"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p6">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86977.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86977.tiff"/>
+         <zone xml:id="zone_d1c_5yl_3gc" lry="1318" lrx="2095" uly="409" ulx="1378"/>
+         <zone xml:id="zone_kq4_5yl_3gc" lry="1304" lrx="1155" uly="395" ulx="432"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p004"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p7">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86978.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86978.tiff"/>
+         <zone xml:id="zone_fqs_5zl_3gc" lry="1322" lrx="2114" uly="395" ulx="1382"/>
+         <zone xml:id="zone_qkg_vzl_3gc" lry="1309" lrx="1159" uly="404" ulx="441"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p005"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p8">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86979.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86979.tiff"/>
+         <zone xml:id="zone_hjb_41m_3gc" lry="1318" lrx="2086" uly="395" ulx="1373"/>
+         <zone xml:id="zone_cs4_41m_3gc" lry="1313" lrx="1155" uly="390" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p006"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p9">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86980.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86980.tiff"/>
+         <zone xml:id="zone_dfr_3bm_3gc" lry="1300" lrx="2105" uly="400" ulx="1386"/>
+         <zone xml:id="zone_tld_jbm_3gc" lry="1313" lrx="1141" uly="404" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p007"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p10">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86981.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86981.tiff"/>
+         <zone xml:id="zone_ktz_1cm_3gc" lry="1313" lrx="2100" uly="395" ulx="1377"/>
+         <zone xml:id="zone_in4_bcm_3gc" lry="1295" lrx="1141" uly="386" ulx="418"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p008"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p11">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86982.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86982.tiff"/>
+         <zone xml:id="zone_bf3_rcm_3gc" lry="1309" lrx="2082" uly="390" ulx="1364"/>
+         <zone xml:id="zone_amv_rcm_3gc" lry="1304" lrx="1150" uly="390" ulx="409"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p009"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p12">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86983.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86983.tiff"/>
+         <zone xml:id="zone_vcy_gdm_3gc" lry="1309" lrx="2100" uly="404" ulx="1377"/>
+         <zone xml:id="zone_rtm_hdm_3gc" lry="1304" lrx="1155" uly="404" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p010"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p13">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86984.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86984.tiff"/>
+         <zone xml:id="zone_plp_s2m_3gc" lry="1309" lrx="2095" uly="413" ulx="1386"/>
+         <zone xml:id="zone_ekj_t2m_3gc" lry="1295" lrx="1150" uly="404" ulx="445"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p011"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p14">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86985.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86985.tiff"/>
+         <zone xml:id="zone_gtv_1hq_3gc" lry="1304" lrx="2100" uly="395" ulx="1377"/>
+         <zone xml:id="zone_lwn_bhq_3gc" lry="1295" lrx="1150" uly="390" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p012"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p15">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86986.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86986.tiff"/>
+         <zone xml:id="zone_h3d_nhq_3gc" lry="1309" lrx="2100" uly="400" ulx="1364"/>
+         <zone xml:id="zone_ow5_nhq_3gc" lry="1300" lrx="1141" uly="400" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p013"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p16">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86987.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86987.tiff"/>
+         <zone xml:id="zone_v4t_13q_3gc" lry="1313" lrx="2114" uly="400" ulx="1364"/>
+         <zone xml:id="zone_pjg_b3q_3gc" lry="1295" lrx="1155" uly="400" ulx="441"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p014"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p17">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86988.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86988.tiff"/>
+         <zone xml:id="zone_j11_l3q_3gc" lry="1309" lrx="2105" uly="390" ulx="1386"/>
+         <zone xml:id="zone_ygm_l3q_3gc" lry="1300" lrx="1155" uly="400" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p015"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p18">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86989.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86989.tiff"/>
+         <zone xml:id="zone_hrt_djq_3gc" lry="1295" lrx="2095" uly="409" ulx="1373"/>
+         <zone xml:id="zone_bvh_2jq_3gc" lry="1286" lrx="1150" uly="400" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p016"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p19">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86990.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86990.tiff"/>
+         <zone xml:id="zone_v5m_yjq_3gc" lry="1318" lrx="2105" uly="409" ulx="1373"/>
+         <zone xml:id="zone_h4z_yjq_3gc" lry="1313" lrx="1150" uly="404" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p017"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p20">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86991.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86991.tiff"/>
+         <zone xml:id="zone_mz2_mkq_3gc" lry="1309" lrx="2100" uly="386" ulx="1377"/>
+         <zone xml:id="zone_tgw_mkq_3gc" lry="1313" lrx="1150" uly="404" ulx="418"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p018"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p21">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86992.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86992.tiff"/>
+         <zone xml:id="zone_jdd_ykq_3gc" lry="1309" lrx="2100" uly="400" ulx="1373"/>
+         <zone xml:id="zone_zrb_1lq_3gc" lry="1295" lrx="1150" uly="390" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p019"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p22">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86993.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86993.tiff"/>
+         <zone xml:id="zone_gbd_rlq_3gc" lry="1300" lrx="2100" uly="390" ulx="1364"/>
+         <zone xml:id="zone_r4t_rlq_3gc" lry="1304" lrx="1145" uly="400" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p020"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p23">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86994.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86994.tiff"/>
+         <zone xml:id="zone_nbm_mmq_3gc" lry="1318" lrx="2091" uly="409" ulx="1373"/>
+         <zone xml:id="zone_cmb_nmq_3gc" lry="1304" lrx="1159" uly="400" ulx="432"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p021"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p24">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86995.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86995.tiff"/>
+         <zone xml:id="zone_uqp_xmq_3gc" lry="1318" lrx="2082" uly="409" ulx="1355"/>
+         <zone xml:id="zone_rfc_ymq_3gc" lry="1300" lrx="1136" uly="409" ulx="409"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p022"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p25">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86996.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86996.tiff"/>
+         <zone xml:id="zone_dbg_3nq_3gc" lry="1295" lrx="2105" uly="390" ulx="1373"/>
+         <zone xml:id="zone_wjt_3nq_3gc" lry="1304" lrx="1155" uly="386" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p023"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p26">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86997.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86997.tiff"/>
+         <zone xml:id="zone_gd3_tnq_3gc" lry="1309" lrx="2100" uly="395" ulx="1359"/>
+         <zone xml:id="zone_yhs_tnq_3gc" lry="1313" lrx="1150" uly="390" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p024"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p27">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86998.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86998.tiff"/>
+         <zone xml:id="zone_h4c_h4q_3gc" lry="1318" lrx="2100" uly="404" ulx="1368"/>
+         <zone xml:id="zone_d1q_h4q_3gc" lry="1304" lrx="1141" uly="400" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p025"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p28">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86999.tiff/full/1000,749/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/86999.tiff"/>
+         <zone xml:id="zone_i3p_mqq_3gc" lry="1309" lrx="2100" uly="390" ulx="1364"/>
+         <zone xml:id="zone_dwz_mqq_3gc" lry="1300" lrx="1159" uly="409" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p026"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p29">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87000.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87000.tiff"/>
+         <zone xml:id="zone_k4p_ltq_3gc" lry="1318" lrx="2095" uly="395" ulx="1368"/>
+         <zone xml:id="zone_u1c_mtq_3gc" lry="1318" lrx="1150" uly="404" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p027"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p30">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87001.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87001.tiff"/>
+         <zone xml:id="zone_ebt_vtq_3gc" lry="1309" lrx="2109" uly="390" ulx="1364"/>
+         <zone xml:id="zone_t4d_wtq_3gc" lry="1290" lrx="1145" uly="409" ulx="409"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p028"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p31">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87002.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87002.tiff"/>
+         <zone xml:id="zone_odc_f5q_3gc" lry="1286" lrx="2095" uly="395" ulx="1368"/>
+         <zone xml:id="zone_vxp_f5q_3gc" lry="1304" lrx="1141" uly="404" ulx="441"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p029"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p32">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87003.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87003.tiff"/>
+         <zone xml:id="zone_obf_s5q_3gc" lry="1322" lrx="2095" uly="400" ulx="1364"/>
+         <zone xml:id="zone_mxr_s5q_3gc" lry="1304" lrx="1145" uly="390" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p030"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p33">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87004.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87004.tiff"/>
+         <zone xml:id="zone_bpb_3vq_3gc" lry="1313" lrx="2095" uly="395" ulx="1373"/>
+         <zone xml:id="zone_uq4_3vq_3gc" lry="1304" lrx="1150" uly="395" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p031"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p34">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87005.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87005.tiff"/>
+         <zone xml:id="zone_ebs_vvq_3gc" lry="1309" lrx="2114" uly="390" ulx="1373"/>
+         <zone xml:id="zone_xbg_wvq_3gc" lry="1304" lrx="1159" uly="395" ulx="409"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p032"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p35">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87006.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87006.tiff"/>
+         <zone xml:id="zone_e3p_fwq_3gc" lry="1300" lrx="2105" uly="395" ulx="1373"/>
+         <zone xml:id="zone_ucc_gwq_3gc" lry="1318" lrx="1173" uly="409" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p033"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p36">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87007.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87007.tiff"/>
+         <zone xml:id="zone_jhv_rwq_3gc" lry="1304" lrx="2100" uly="390" ulx="1368"/>
+         <zone xml:id="zone_nfl_swq_3gc" lry="1290" lrx="1159" uly="400" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p034"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p37">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87008.tiff/full/1000,749/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87008.tiff"/>
+         <zone xml:id="zone_t54_syq_3gc" lry="1309" lrx="2105" uly="409" ulx="1368"/>
+         <zone xml:id="zone_ftd_tyq_3gc" lry="1304" lrx="1159" uly="400" ulx="418"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p035"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p38">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87009.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87009.tiff"/>
+         <zone xml:id="zone_dmj_dzq_3gc" lry="1304" lrx="2109" uly="390" ulx="1364"/>
+         <zone xml:id="zone_tl1_2zq_3gc" lry="1318" lrx="1159" uly="404" ulx="418"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p036"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p39">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87010.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87010.tiff"/>
+         <zone xml:id="zone_qnf_pzq_3gc" lry="1290" lrx="2105" uly="395" ulx="1364"/>
+         <zone xml:id="zone_kft_pzq_3gc" lry="1309" lrx="1168" uly="395" ulx="441"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p037"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p40">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87011.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87011.tiff"/>
+         <zone xml:id="zone_od4_b1r_3gc" lry="1304" lrx="2123" uly="400" ulx="1373"/>
+         <zone xml:id="zone_d4d_c1r_3gc" lry="1304" lrx="1164" uly="390" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p038"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p41">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87012.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87012.tiff"/>
+         <zone xml:id="zone_flv_m1r_3gc" lry="1295" lrx="2118" uly="400" ulx="1377"/>
+         <zone xml:id="zone_q2g_n1r_3gc" lry="1304" lrx="1173" uly="395" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p039"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p42">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87013.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87013.tiff"/>
+         <zone xml:id="zone_nlv_z1r_3gc" lry="1318" lrx="2123" uly="390" ulx="1382"/>
+         <zone xml:id="zone_zhm_1br_3gc" lry="1300" lrx="1164" uly="400" ulx="418"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p040"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p43">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87014.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87014.tiff"/>
+         <zone xml:id="zone_h3z_3br_3gc" lry="1309" lrx="2105" uly="390" ulx="1373"/>
+         <zone xml:id="zone_mbl_jbr_3gc" lry="1300" lrx="1164" uly="395" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p041"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p44">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87015.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87015.tiff"/>
+         <zone xml:id="zone_lxm_zbr_3gc" lry="1300" lrx="2109" uly="386" ulx="1391"/>
+         <zone xml:id="zone_dgy_zbr_3gc" lry="1290" lrx="1159" uly="409" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p042"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p45">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87016.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87016.tiff"/>
+         <zone xml:id="zone_etc_3cr_3gc" lry="1300" lrx="2105" uly="390" ulx="1364"/>
+         <zone xml:id="zone_oxq_3cr_3gc" lry="1272" lrx="1159" uly="418" ulx="409"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p043"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p46">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87017.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87017.tiff"/>
+         <zone xml:id="zone_alg_wcr_3gc" lry="1304" lrx="2095" uly="400" ulx="1382"/>
+         <zone xml:id="zone_sqt_wcr_3gc" lry="1300" lrx="1150" uly="404" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p044"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p47">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87018.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87018.tiff"/>
+         <zone xml:id="zone_dgq_hdr_3gc" lry="1304" lrx="2100" uly="395" ulx="1373"/>
+         <zone xml:id="zone_a2b_3dr_3gc" lry="1300" lrx="1155" uly="404" ulx="427"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p045"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p48">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87019.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87019.tiff"/>
+         <zone xml:id="zone_tvk_tdr_3gc" lry="1300" lrx="2095" uly="395" ulx="1345"/>
+         <zone xml:id="zone_vnb_5dr_3gc" lry="1290" lrx="1168" uly="377" ulx="432"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p046"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p49">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87020.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87020.tiff"/>
+         <zone xml:id="zone_z4h_22r_3gc" lry="1304" lrx="2100" uly="404" ulx="1368"/>
+         <zone xml:id="zone_mnb_f2r_3gc" lry="1309" lrx="1159" uly="390" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p047"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p50">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87021.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87021.tiff"/>
+         <zone xml:id="zone_kms_42r_3gc" lry="1327" lrx="2105" uly="395" ulx="1368"/>
+         <zone xml:id="zone_iq2_p2r_3gc" lry="1309" lrx="1155" uly="400" ulx="432"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p048"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p51">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87022.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87022.tiff"/>
+         <zone xml:id="zone_vwj_y2r_3gc" lry="1304" lrx="2118" uly="400" ulx="1368"/>
+         <zone xml:id="zone_t5f_z2r_3gc" lry="1304" lrx="1145" uly="372" ulx="414"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p049"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p52">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87023.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87023.tiff"/>
+         <zone xml:id="zone_t5x_jfr_3gc" lry="1304" lrx="2095" uly="390" ulx="1395"/>
+         <zone xml:id="zone_hcl_kfr_3gc" lry="1331" lrx="1164" uly="381" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p050"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p53">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87024.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87024.tiff"/>
+         <zone xml:id="zone_xz3_5fr_3gc" lry="1318" lrx="2100" uly="400" ulx="1382"/>
+         <zone xml:id="zone_mky_5fr_3gc" lry="1313" lrx="1150" uly="409" ulx="423"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p051"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p54">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87025.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87025.tiff"/>
+         <zone xml:id="zone_nb4_4gr_3gc" lry="1309" lrx="2095" uly="395" ulx="1368"/>
+         <zone xml:id="zone_nnx_4gr_3gc" lry="1313" lrx="1159" uly="390" ulx="432"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p052"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p55">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87026.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87026.tiff"/>
+         <zone xml:id="zone_wkn_wgr_3gc" lry="1295" lrx="2095" uly="400" ulx="1386"/>
+         <zone xml:id="zone_cb1_xgr_3gc" lry="1304" lrx="1136" uly="400" ulx="432"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p053"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p56">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87027.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87027.tiff"/>
+         <zone xml:id="zone_hbg_ghr_3gc" lry="1309" lrx="2095" uly="390" ulx="1373"/>
+         <zone xml:id="zone_qxt_ghr_3gc" lry="1318" lrx="1159" uly="404" ulx="441"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p054"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p57">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87028.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87028.tiff"/>
+         <zone xml:id="zone_jqm_phr_3gc" lry="1309" lrx="2100" uly="400" ulx="1364"/>
+         <zone xml:id="zone_hrw_phr_3gc" lry="1309" lrx="1150" uly="404" ulx="436"/>
+      </surface>
+      <surface lry="2000" lrx="2669" uly="0" ulx="0" xml:id="p055"
+         sameAs="https://dgcl.doshisha.ac.jp/images/manifest/1/50000/canvas/p58">
+         <graphic
+            url="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87029.tiff/full/full/0/default.jpg"
+            width="2669px" height="2000px"
+            sameAs="https://dgcl.doshisha.ac.jp/iipsrv/iipsrv.fcgi?IIIF=/iiif/1/50000/MD00000288/87029.tiff"/>
+         <zone xml:id="zone_m4k_yhr_3gc" lry="1304" lrx="2114" uly="404" ulx="1405"/>
+         <zone xml:id="zone_erw_yhr_3gc" lry="1295" lrx="1164" uly="404" ulx="468"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="waka" xml:id="waka1">
+            <head facs="#p001">一　桐壺</head><p>
+            <said  who="桐壺" toWhom="左大臣"><lg type="tanka">
+               <l xml:id="waka1_kami" facs="#zone_wd1_2mn_jgc">いときなき　初元ゆひに　長き世を</l>
+               <l xml:id="waka1_shimo" facs="#zone_sdm_2mn_jgc">契る心は　結ひこめはや</l>
+            </lg></said></p> 
+         </div>      
+         <div type="waka" xml:id="waka2">
+            <head facs="#p002">二　帚木</head><p>
+            <said who="空蝉" toWhom="光源氏"><lg type="tanka">
+                  <l xml:id="waka2_kami" facs="#zone_nl3_2yl_3gc">数ならぬ　ふせやにおふる　名の憂さに</l>
+               <l xml:id="waka2_shimo" facs="#zone_zhx_2yl_3gc">あるにもあらす　消ゆる帚木</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka3">
+            <head facs="#p003">三　空蝉（うつせみ）</head><p>
+            <said who="光源氏" toWhom="空蝉"><lg type="tanka">
+               <l xml:id="waka3_kami" facs="#zone_d1c_5yl_3gc">空蝉の　身をかへてけり　木のもとに</l>
+               <l xml:id="waka3_shimo" facs="#zone_kq4_5yl_3gc">なを人からの　なつかしきかな</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka4">
+            <head facs="#p004">四　夕顔</head><p>
+            <said who="光源氏" toWhom="夕顔"><lg type="tanka">
+               <l xml:id="waka4_kami" facs="#zone_fqs_5zl_3gc">寄りてこそ　それかとも見め　たそかれに</l>
+               <l xml:id="waka4_shimo" facs="#zone_qkg_vzl_3gc">ほのぼの見ゆる　花の夕顔</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka5">
+            <head facs="#p005">五　若紫</head><p>
+            <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka5_kami" facs="#zone_hjb_41m_3gc">手に摘みて　いつしかも見む　紫の</l>
+               <l xml:id="waka5_shimo" facs="#zone_cs4_41m_3gc">根にかよひける　野辺の若草</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka6">
+            <head facs="#p006">六　末摘花</head><p>
+               <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka6_kami" facs="#zone_dfr_3bm_3gc">なつかしき　色ともなしに　何にこの</l>
+               <l xml:id="waka6_shimo" facs="#zone_tld_jbm_3gc">すゑつむ花を　袖に触れけむ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka7">
+            <head facs="#p007">七　紅葉賀</head><p>
+            <said who="光源氏" toWhom="藤壺の宮"><lg type="tanka">
+               <l xml:id="waka7_kami" facs="#zone_ktz_1cm_3gc">物思ふに　立ち舞ふへくも　あらぬ身の</l>
+               <l xml:id="waka7_shimo" facs="#zone_in4_bcm_3gc">袖うち振りし　心知りきや</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka8">
+            <head facs="#p008">八　花之宴</head><p>
+            <said who="光源氏" toWhom="朧月夜"><lg type="tanka">
+               <l xml:id="waka8_kami" facs="#zone_bf3_rcm_3gc">いつれそと　露のやとりを　わかむらに</l>
+               <l xml:id="waka8_shimo" facs="#zone_amv_rcm_3gc">小笹が原に　風もこそ吹け</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka9">
+            <head facs="#p009">九　葵</head><p>
+            <said who="光源氏" toWhom="紫の上"><lg type="tanka">
+               <l xml:id="waka9_kami" facs="#zone_vcy_gdm_3gc">はかりなき　千尋の底の　みるふさの</l>
+               <l xml:id="waka9_shimo" facs="#zone_rtm_hdm_3gc">生ひゆくすゑは　我のみそ見ん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka10">
+            <head facs="#p010">十　榊</head><p>
+            <said who="六条御息所" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka10_kami" facs="#zone_plp_s2m_3gc">神かきに　しるしの杉も　なきものを</l>
+               <l xml:id="waka10_shimo" facs="#zone_ekj_t2m_3gc">いかにまかへて　折れる榊そ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka11">
+            <head facs="#p011">十一　花散里</head><p>
+            <said who="光源氏" toWhom="麗景殿女御"><lg type="tanka">
+               <l xml:id="waka11_kami" facs="#zone_gtv_1hq_3gc">橘の 香をなつかしみ ほととぎす</l>
+               <l xml:id="waka11_shimo" facs="#zone_lwn_bhq_3gc">花散る里に たづねてそとふ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka12">
+            <head facs="#p012">十二　須磨</head><p>
+            <said who="六条御息所" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka12_kami" facs="#zone_h3d_nhq_3gc">うきめかる　伊勢おのあまを　思ひやれ</l>
+               <l xml:id="waka12_shimo" facs="#zone_ow5_nhq_3gc">藻塩垂るてふ　須磨の浦にて</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka13">
+            <head facs="#p013">十三　明石</head><p>
+            <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka13_kami" facs="#zone_v4t_13q_3gc">秋の夜の　月毛の駒よ　我かこふる</l>
+               <l xml:id="waka13_shimo" facs="#zone_pjg_b3q_3gc">雲井をかけれ　時の間もみん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka14">
+            <head facs="#p014">十四　澪標</head><p>
+            <said who="明石の君" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka14_kami" facs="#zone_j11_l3q_3gc">数ならて　難波のことも　かひなきに</l>
+               <l xml:id="waka14_shimo" facs="#zone_ygm_l3q_3gc">なにみをつくし　思ひ初けん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka15">
+            <head facs="#p015">十五　蓬生</head><p>
+            <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka15_kami" facs="#zone_hrt_djq_3gc">尋ねても　我こそとはめ　道もなく</l>
+               <l xml:id="waka15_shimo" facs="#zone_bvh_2jq_3gc">深き蓬の　もとの心を</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka16">
+            <head facs="#p016">十六　関屋</head><p>
+            <said who="空蝉" toWhom="光源氏"><lg type="tanka">   
+               <l xml:id="waka16_kami" facs="#zone_v5m_yjq_3gc">逢坂の　関やいかなる　関なれは</l>
+               <l xml:id="waka16_shimo" facs="#zone_h4z_yjq_3gc">しけき嘆きの　中をわくらむ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka17">
+            <head facs="#p017">十七　絵合</head><p>
+            <said who="光源氏" toWhom="紫の上"><lg type="tanka">
+               <l xml:id="waka17_kami" facs="#zone_mz2_mkq_3gc">憂きめ見し　その折よりも　今日はまた</l>
+               <l xml:id="waka17_shimo" facs="#zone_tgw_mkq_3gc">過にしかたに　かへる涙か</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka18">
+            <head facs="#p018">十八　松風</head><p>
+            <said who="明石の尼君" toWhom="明石の尼君"><lg type="tanka">
+               <l xml:id="waka18_kami" facs="#zone_jdd_ykq_3gc">身をかへて　一人帰れる　ふるさとに</l>
+               <l xml:id="waka18_shimo" facs="#zone_zrb_1lq_3gc">聞きしに似たる　松風そ吹く</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka19">
+            <head facs="#p019">十九　薄雲</head><p>
+            <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka19_kami" facs="#zone_gbd_rlq_3gc">入り日さす　峰にたなびく　薄雲は</l>
+               <l xml:id="waka19_shimo" facs="#zone_r4t_rlq_3gc">もの思ふ袖に　色やまがえる</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka20">
+            <head facs="#p020">二十　朝顔</head><p>
+            <said who="光源氏" toWhom="朝顔の君"><lg type="tanka">
+               <l xml:id="waka20_kami" facs="#zone_nbm_mmq_3gc">見し折の　露忘られぬ　朝顔の</l>
+               <l xml:id="waka20_shimo" facs="#zone_cmb_nmq_3gc">花の盛りは　過やしぬらむ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka21">
+            <head facs="#p021">二十一　乙女</head><p>
+            <said who="光源氏" toWhom="筑紫の五節"><lg type="tanka">
+               <l xml:id="waka21_kami" facs="#zone_uqp_xmq_3gc">をとめ子か　神さひぬらし　あまつ袖</l>
+               <l xml:id="waka21_shimo" facs="#zone_rfc_ymq_3gc">古き世の友　よはひ過ぬれは</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka22">
+            <head facs="#p022">二十二　玉蔓（玉かつら）</head><p>
+            <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka22_kami" facs="#zone_dbg_3nq_3gc">恋ひわたる　身はそれなれと　玉かつら</l>
+               <l xml:id="waka22_shimo" facs="#zone_wjt_3nq_3gc">いかなるすちを　尋きつらし</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka23">
+            <head facs="#p023">二十三　初音</head><p>
+            <said who="明石の君" toWhom="明石の姫君"><lg type="tanka">
+               <l xml:id="waka23_kami" facs="#zone_gd3_tnq_3gc">年月を　松にひかれて　ふる人に</l>
+               <l xml:id="waka23_shimo" facs="#zone_yhs_tnq_3gc">今日うぐいすの　初音聞かせよ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka24">
+            <head facs="#p024">二十四　胡蝶</head><p>
+            <said who="紫の上" toWhom="秋好中宮"><lg type="tanka">
+               <l xml:id="waka24_kami" facs="#zone_h4c_h4q_3gc">花園の　胡蝶をさへや　した草に</l>
+               <l xml:id="waka24_shimo" facs="#zone_d1q_h4q_3gc">秋待つ虫は　うとく見るらん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka25">
+            <head facs="#p025">二十五　蛍</head><p>
+            <said who="玉鬘" toWhom="蛍兵部卿宮"><lg type="tanka">
+               <l xml:id="waka25_kami" facs="#zone_i3p_mqq_3gc">声はせて　身をのみ焦かす　蛍こそ</l>
+               <l xml:id="waka25_shimo" facs="#zone_dwz_mqq_3gc">言ふよりまさる　思ひなるらめ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka26">
+            <head facs="#p026">二十六　常夏</head><p>
+            <said who="光源氏" toWhom="玉鬘"><lg type="tanka">
+               <l xml:id="waka26_kami" facs="#zone_k4p_ltq_3gc">なてしこの　とこなつかしき　色をみは</l>
+               <l xml:id="waka26_shimo" facs="#zone_u1c_mtq_3gc">もとの垣根の　人や尋し</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka27">
+            <head facs="#p027">二十七　篝火</head><p>
+            <said who="光源氏" toWhom="玉鬘"><lg type="tanka">
+               <l xml:id="waka27_kami" facs="#zone_ebt_vtq_3gc">かかり火に　たちそふ恋の　煙こそ</l>
+               <l xml:id="waka27_shimo" facs="#zone_t4d_wtq_3gc">世には絶えせぬ　炎なりけれ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka28">
+            <head facs="#p028">二十八　野分</head><p>
+            <said who="夕霧" toWhom="雲居雁"><lg type="tanka">
+               <l xml:id="waka28_kami" facs="#zone_odc_f5q_3gc">風騒ぎ　むら雲まがふ　夕べにも</l>
+               <l xml:id="waka28_shimo" facs="#zone_vxp_f5q_3gc">忘るる間なく　忘られぬ君</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka29">
+            <head facs="#p029">二十九　御幸</head><p>
+            <said who="光源氏" toWhom="冷泉帝"><lg type="tanka">
+               <l xml:id="waka29_kami" facs="#zone_obf_s5q_3gc">小塩山　みゆき積もれる　松原は</l>
+               <l xml:id="waka29_shimo" facs="#zone_mxr_s5q_3gc">今日はかりなる　跡やなからん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka30">
+            <head facs="#p030">三十　藤袴</head><p>
+            <said who="夕霧" toWhom="玉鬘"><lg type="tanka">
+               <l xml:id="waka30_kami" facs="#zone_bpb_3vq_3gc">同し野の　露にやぬるる　藤はかま</l>
+               <l xml:id="waka30_shimo" facs="#zone_uq4_3vq_3gc">あはれはかけよ　かことはかりも</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka31">
+            <head facs="#p031">三十一　真木柱</head><p>
+               <said who="真木柱" toWhom="北の方"><lg type="tanka">
+               <l xml:id="waka31_kami" facs="#zone_ebs_vvq_3gc">今はとて　宿かれるとも　馴れ来つる</l>
+               <l xml:id="waka31_shimo" facs="#zone_xbg_wvq_3gc">真木の柱よ　我を忘るな</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka32">
+            <head facs="#p032">三十二　梅かえ</head><p>
+            <said who="朝顔の君" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka32_kami" facs="#zone_e3p_fwq_3gc">花の香は　散りにし枝に　とまらねと</l>
+               <l xml:id="waka32_shimo" facs="#zone_ucc_gwq_3gc">うつらん袖に　浅くしまめや</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka33">
+            <head facs="#p033">三十三　藤のうら葉</head><p>
+            <said who="sa" toWhom="sas"><lg type="tanka">
+               <l xml:id="waka33_kami" facs="#zone_jhv_rwq_3gc">春日さす　藤の裏葉の　うちとけて</l>
+               <l xml:id="waka33_shimo" facs="#zone_nfl_swq_3gc">君し思はは　我も頼まん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka34">
+            <head facs="#p034">三十四　若菜-上</head><p>
+            <said who="光源氏" toWhom="玉鬘"><lg type="tanka">
+               <l xml:id="waka34_kami" facs="#zone_t54_syq_3gc">小松原　末のよはひに　引かれてや</l>
+               <l xml:id="waka34_shimo" facs="#zone_ftd_tyq_3gc">野辺の若菜も　年を摘むべき</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka35">
+            <head facs="#p035">三十五　若菜-下</head><p>
+            <said who="女三の宮" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka35_kami" facs="#zone_dmj_dzq_3gc">夕闇は　道たとたとし　月待ちて</l>
+               <l xml:id="waka35_shimo" facs="#zone_tl1_2zq_3gc">かへれ我か背子　その間にも見ん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka36">
+            <head facs="#p036">三十六　柏木</head><p>
+            <said who="柏木" toWhom="女三の宮"><lg type="tanka">
+               <l xml:id="waka36_kami" facs="#zone_qnf_pzq_3gc">今はとて　燃えん煙も　むすほほれ</l>
+               <l xml:id="waka36_shimo" facs="#zone_kft_pzq_3gc">絶えぬ思ひの　なをや残らむ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka37">
+            <head facs="#p037">三十七　横笛</head><p>
+            <said who="夕霧" toWhom="一条御息所"><lg type="tanka">
+               <l xml:id="waka37_kami" facs="#zone_od4_b1r_3gc">横笛の　しらへはことに　変はらぬを</l>
+               <l xml:id="waka37_shimo" facs="#zone_d4d_c1r_3gc">むなしくなりし　音こそ尽きせぬ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka38">
+            <head facs="#p038">三十八　鈴虫</head><p>
+            <said who="不明" toWhom="不明"><lg type="tanka">
+               <l xml:id="waka38_kami" facs="#zone_flv_m1r_3gc">心もて　草のやとりを　いとへとも</l>
+               <l xml:id="waka38_shimo" facs="#zone_q2g_n1r_3gc">なを鈴虫の　声そふりせぬ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka39">
+            <head facs="#p039">三十九　夕霧</head><p>
+            <said who="夕霧" toWhom="女二の宮（落葉の宮）"><lg type="tanka">
+               <l xml:id="waka39_kami" facs="#zone_nlv_z1r_3gc">山里の　あはれを添ふる　夕霧に</l>
+               <l xml:id="waka39_shimo" facs="#zone_zhm_1br_3gc">立ち出ん空も　なきここちして</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka40">
+            <head facs="#p040">四十　御法</head><p>
+            <said who="紫の上" toWhom="花散里"><lg type="tanka">
+               <l xml:id="waka40_kami" facs="#zone_h3z_3br_3gc">絶えぬへき 御法なからそ 頼まるる</l>
+               <l xml:id="waka40_shimo" facs="#zone_mbl_jbr_3gc">世々にとむすふ 中の契りを</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka41">
+            <head facs="#p041">四十一　幻</head><p>
+            <said who="光源氏" toWhom="光源氏"><lg type="tanka">
+               <l xml:id="waka41_kami" facs="#zone_lxm_zbr_3gc">大空を　かよふ幻　夢にたに</l>
+               <l xml:id="waka41_shimo" facs="#zone_dgy_zbr_3gc">見えこぬ玉の　ゆくゑたつねよ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka42">
+            <head facs="#p042">四十二　雲隠</head><p>
+            <said who="不明" toWhom="不明"><lg type="tanka">
+               <l xml:id="waka42_kami" facs="#zone_etc_3cr_3gc">不明</l>
+               <l xml:id="waka42_shimo" facs="#zone_oxq_3cr_3gc">不明</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka43">
+            <head facs="#p043">四十三　匂宮</head><p>
+            <said who="薫" toWhom="薫"><lg type="tanka">
+               <l xml:id="waka43_kami" facs="#zone_alg_wcr_3gc">おほつかな　誰れにとはまし　いかにして</l>
+               <l xml:id="waka43_shimo" facs="#zone_sqt_wcr_3gc">初めも果ても　知らぬ我身は</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka44">
+            <head facs="#p044">四十四　紅梅</head><p>
+            <said who="紅梅大納言" toWhom="勾宮"><lg type="tanka">
+               <l xml:id="waka44_kami" facs="#zone_dgq_hdr_3gc">心ありて　風のにほはす　園の梅に</l>
+               <l xml:id="waka44_shimo" facs="#zone_a2b_3dr_3gc">まづ鴬の　とはにやあるへき</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka45">
+            <head facs="#p045">四十五　竹河</head><p>
+            <said who="薫" toWhom="玉鬘"><lg type="tanka">
+               <l xml:id="waka45_kami" facs="#zone_tvk_tdr_3gc">たけ川の 橋うち出し 一節に</l>
+               <l xml:id="waka45_shimo" facs="#zone_vnb_5dr_3gc">深き心の そとはしりきや</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka46">
+            <head facs="#p046">四十六　橋姫</head><p>
+            <said who="薫" toWhom="大君"><lg type="tanka">
+               <l xml:id="waka46_kami" facs="#zone_z4h_22r_3gc">橋姫の　心をくみて　たかせさす</l>
+               <l xml:id="waka46_shimo" facs="#zone_mnb_f2r_3gc">さほをしづくに　袖そ濡れぬる</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka47">
+            <head facs="#p047">四十七　推本</head><p>
+            <said who="薫" toWhom="薫"><lg type="tanka">
+               <l xml:id="waka47_kami" facs="#zone_kms_42r_3gc">立ち寄らむ 陰とたのみし 椎がもと</l>
+               <l xml:id="waka47_shimo" facs="#zone_iq2_p2r_3gc">むなしき床に なりにけるかな</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka48">
+            <head facs="#p048">四十八　総角</head><p>
+            <said who="薫" toWhom="大君"><lg type="tanka">
+               <l xml:id="waka48_kami" facs="#zone_vwj_y2r_3gc">あけまきに　長き契りを　結ひこめ</l>
+               <l xml:id="waka48_shimo" facs="#zone_t5f_z2r_3gc">同し所に　よりも会はなん</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka49">
+            <head facs="#p049">四十九　さはらひ</head><p>
+            <said who="中君" toWhom="阿闍梨"><lg type="tanka">
+               <l xml:id="waka49_kami" facs="#zone_t5x_jfr_3gc">この春は　たれにかみけん　亡き人の</l>
+               <l xml:id="waka49_shimo" facs="#zone_hcl_kfr_3gc">かたみに摘める　峰のさはらひ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka50">
+            <head facs="#p050">五十　やとり木</head><p>
+            <said who="薫" toWhom="薫"><lg type="tanka">
+               <l xml:id="waka50_kami" facs="#zone_xz3_5fr_3gc">やとり木と　思ひ出すは　このもとの</l>
+               <l xml:id="waka50_shimo" facs="#zone_mky_5fr_3gc">旅寝もいかに　さひしからまし</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka51">
+            <head facs="#p051">五十一　東屋</head><p>
+            <said who="薫" toWhom="薫"><lg type="tanka">
+               <l xml:id="waka51_kami" facs="#zone_nb4_4gr_3gc">さしとむる　むくらやしるき　東屋の</l>
+               <l xml:id="waka51_shimo" facs="#zone_nnx_4gr_3gc">あまりほど降る　雨そそきかな</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka52">
+            <head facs="#p052">五十二　浮舟</head><p>
+            <said who="浮舟" toWhom="勾宮"><lg type="tanka">
+               <l xml:id="waka52_kami" facs="#zone_wkn_wgr_3gc">橘の　小島の色は　変はらしを</l>
+               <l xml:id="waka52_shimo" facs="#zone_cb1_xgr_3gc">この浮舟そ　行方知られぬ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka53">
+            <head facs="#p053">五十三　蜻蛉</head><p>
+            <said who="薫" toWhom="薫"><lg type="tanka">
+               <l xml:id="waka53_kami" facs="#zone_hbg_ghr_3gc">ありと見て　手にはとられす　見れはまた</l>
+               <l xml:id="waka53_shimo" facs="#zone_qxt_ghr_3gc">行方も知らす　消えしかけろふ</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka54">
+            <head facs="#p054">五十四　手習</head><p>
+            <said who="浮舟" toWhom="浮舟"><lg type="tanka">
+               <l xml:id="waka54_kami" facs="#zone_jqm_phr_3gc">身を投けし　涙の川の　早き瀬を</l>
+               <l xml:id="waka54_shimo" facs="#zone_hrw_phr_3gc">しからみかけて　誰れか止めし</l>
+            </lg></said></p>
+         </div>
+         <div type="waka" xml:id="waka55">
+            <head facs="#p055">五十五　夢之浮橋</head><p>
+            <said who="薫" toWhom="浮舟"><lg type="tanka">
+               <l xml:id="waka55_kami" facs="#zone_m4k_yhr_3gc">のりの師と　尋ぬる道を　しるへにて</l>
+               <l xml:id="waka55_shimo" facs="#zone_erw_yhr_3gc">思はぬ山に　踏みまとふかな</l>
+            </lg></said></p>
+         </div>
+      </body>
+   </text>
+</TEI>
