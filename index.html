@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>しょうえい自作TEIコーパスビューワー</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Hiragino Kaku Gothic ProN',Meiryo, sans-serif;background:#f6f8fb;color:#0b1220;margin:0}
+    header{background:linear-gradient(90deg,#f8fafc,#eef2ff);padding:18px 20px;border-bottom:1px solid #e2e8f0}
+    .wrap{max-width:1100px;margin:22px auto;padding:18px;background:white;border-radius:12px;box-shadow:0 6px 24px rgba(15,23,42,0.06)}
+    h1{margin:0 0 8px;font-size:18px}
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:16px}
+    .panel{background:#fbfdff;padding:12px;border-radius:10px;border:1px solid #eef2ff;min-height:240px}
+    .image-area{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow-y:auto}
+    .tei-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    .tei-header{background:#f0f9ff;padding:12px;border-radius:8px;border:1px solid #bae6fd;margin-bottom:16px}
+    .tei-header h4{margin:0 0 8px;font-size:14px;color:#0c4a6e}
+    .tei-header p{margin:4px 0;font-size:13px;color:#075985}
+    .section-title{background:#fef3c7;padding:12px;border-radius:8px;border:1px solid #fde68a;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+    .section-title h4{margin:0;color:#78350f;font-size:16px}
+    .tei-item{padding:10px;border-radius:8px;background:white;border:1px solid #f1f5f9}
+    .meta{font-size:13px;color:#64748b;margin-bottom:8px}
+    .title{font-size:15px;font-weight:600;color:#1e293b;margin-bottom:8px;font-family: "Hiragino Mincho ProN","Yu Mincho",serif}
+    a.person{color:#2563eb;text-decoration:none;font-weight:600;cursor:pointer}
+    a.person:hover{text-decoration:underline}
+    .lines{font-family: "Hiragino Mincho ProN","Yu Mincho",serif;background:#fff;padding:10px;border-radius:8px;border:1px solid #f1f5f9}
+    .line{padding:6px 8px;border-radius:6px}
+    .line.highlight{background:linear-gradient(90deg,#fffbeb,#fff7cc)}
+    .image-area img{max-width:100%;border-radius:8px;border:1px solid #e6eef6;display:block;margin-bottom:12px}
+    #imageViewer{margin-bottom:16px;min-height:200px}
+    #graph{width:100%;height:500px;border:1px solid #e5e7eb;border-radius:8px;margin-top:12px;background:white}
+    button{padding:4px 8px;font-size:12px;background:#3b82f6;color:white;border:none;border-radius:4px;cursor:pointer}
+    button:hover{background:#2563eb}
+    .controls{margin-bottom:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .controls label{font-size:14px}
+    .controls input[type="text"]{padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px}
+    .waka-section{margin-bottom:24px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="background:transparent;padding:0">
+      <h1>しょうえい自作TEIコーパスビューワー</h1>
+      <p>TEI の <code>who</code> と <code>toWhom</code> 関係をグラフで可視化し、各 <code>facs</code> の画像をプレビューします。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="controls">
+      <label>TEI ファイル: <input id="file" type="file" accept=".xml,text/xml,application/xml"></label>
+      <label>画像ベースURL: <input id="baseUrl" type="text" placeholder="https://example.com/images/" style="width:250px"></label>
+      <button id="parseBtn">解析</button>
+    </div>
+
+    <div class="grid">
+      <section class="panel">
+        <h3>テキスト</h3>
+        <div id="outputArea"><p>まだファイルが読み込まれていません。</p></div>
+      </section>
+
+      <aside class="panel image-area">
+        <h3>画像プレビュー</h3>
+        <div id="imageViewer"><p style="color:#64748b">画像ボタンをクリックしてください。</p></div>
+        <h3>発話関係グラフ</h3>
+        <div id="graph"></div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- スクリプトはここにひとまとめ -->
+  <script>
+    function escapeHtml(s){return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    let currentTEIDoc = null;
+
+    // ページロード時に自動で同ディレクトリの test.xml を読み込む
+    window.addEventListener('DOMContentLoaded', () => {
+      const defaultUrl = "Genji-karuta.xml"; // GitHub Pages 上で index.html と同じ階層に test.xml を置いている場合はこれでOK
+      console.log("🔍 Loading default TEI file:", defaultUrl);
+
+      fetch(defaultUrl)
+        .then(res => {
+          if(!res.ok) throw new Error(`XMLの取得に失敗しました (${res.status})`);
+          return res.text();
+        })
+        .then(xmlText => {
+          console.log("✅ 源氏かるた.xml を取得しました");
+          parseTEI(xmlText);
+        })
+        .catch(err => {
+          console.error("❌ 自動読み込みエラー:", err);
+          document.getElementById('outputArea').innerHTML =
+            `<p style='color:#ef4444'>源氏かるた.xml の自動読み込みに失敗しました。(${escapeHtml(err.message)})</p>`;
+        });
+    });
+
+    // 手動でファイル選択して読み込み
+    document.getElementById('parseBtn').addEventListener('click',()=>{
+      const f=document.getElementById('file').files[0];
+      if(!f){alert('ファイルを選んでください');return}
+      const r=new FileReader();
+      r.onload=e=>parseTEI(e.target.result);
+      r.readAsText(f,'utf-8');
+    });
+
+    function parseTEI(xmlText){
+      try{
+        const parser=new DOMParser();
+        const doc=parser.parseFromString(xmlText,'application/xml');
+        currentTEIDoc = doc;
+
+        const output=document.getElementById('outputArea');
+        const imageViewer=document.getElementById('imageViewer');
+        output.innerHTML='';
+        imageViewer.innerHTML='<p style="color:#64748b">画像ボタンをクリックしてください。</p>';
+
+        let links=[];
+        let nodes=new Map();
+
+        // teiHeaderから情報を取得
+        const teiHeader = doc.querySelector('teiHeader');
+        if(teiHeader){
+          const headerDiv = document.createElement('div');
+          headerDiv.className = 'tei-header';
+
+          const title = teiHeader.querySelector('title');
+          const author = teiHeader.querySelector('author');
+          const date = teiHeader.querySelector('date');
+          const publisher = teiHeader.querySelector('publisher');
+
+          let headerHTML = '<h4>文書情報</h4>';
+          if(title) headerHTML += `<p><strong>タイトル:</strong> ${escapeHtml(title.textContent.trim())}</p>`;
+          if(author) headerHTML += `<p><strong>著者:</strong> ${escapeHtml(author.textContent.trim())}</p>`;
+          if(date) headerHTML += `<p><strong>日付:</strong> ${escapeHtml(date.textContent.trim())}</p>`;
+          if(publisher) headerHTML += `<p><strong>出版者:</strong> ${escapeHtml(publisher.textContent.trim())}</p>`;
+
+          headerDiv.innerHTML = headerHTML;
+          output.appendChild(headerDiv);
+        }
+
+        // div要素ごとにグループ化して処理
+        const divElements = Array.from(doc.querySelectorAll('div[type="waka"]'));
+        console.log('Found divs:', divElements.length);
+
+        divElements.forEach((divEl, idx) => {
+          console.log('Processing div:', idx);
+
+          // divごとのコンテナを作成
+          const wakaSection = document.createElement('div');
+          wakaSection.className = 'waka-section';
+
+          // head要素を取得
+          const head = divEl.querySelector('head');
+          if(head){
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'section-title';
+
+            const headText = head.textContent.trim();
+            const headFacs = head.getAttribute('facs');
+
+            const titleH4 = document.createElement('h4');
+            titleH4.textContent = headText;
+            titleDiv.appendChild(titleH4);
+
+            if(headFacs){
+              const btn = document.createElement('button');
+              btn.textContent = '全体画像を表示';
+              btn.onclick = () => showFacsImage(headFacs);
+              titleDiv.appendChild(btn);
+            }
+
+            wakaSection.appendChild(titleDiv);
+          }
+
+          // said要素を取得して処理
+          const saidsInDiv = Array.from(divEl.getElementsByTagName('said'));
+          console.log('Found saids in div:', saidsInDiv.length);
+
+          const list = document.createElement('ul');
+          list.className = 'tei-list';
+
+          saidsInDiv.forEach(said => {
+            const who = said.getAttribute('who');
+            const toWhom = said.getAttribute('toWhom');
+            if(who) nodes.set(who,{id:who});
+            if(toWhom) nodes.set(toWhom,{id:toWhom});
+            if(who && toWhom) links.push({source:who,target:toWhom});
+
+            const li = document.createElement('li');
+            li.className = 'tei-item';
+
+            const metaDiv = document.createElement('div');
+            metaDiv.className = 'meta';
+            metaDiv.innerHTML = `詠み手: <a class='person'>${escapeHtml(who)}</a> → 宛先: <a class='person'>${escapeHtml(toWhom)}</a>`;
+            li.appendChild(metaDiv);
+
+            const lg = said.querySelector('lg');
+            const lines = document.createElement('div');
+            lines.className = 'lines';
+            if(lg){
+              lg.querySelectorAll('l').forEach(l => {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'line';
+                lineDiv.textContent = l.textContent.trim();
+                const facs = l.getAttribute('facs');
+                if(facs){
+                  const btn = document.createElement('button');
+                  btn.textContent = '画像を表示';
+                  btn.style.marginLeft = '8px';
+                  btn.onclick = () => showFacsImage(facs);
+                  lineDiv.appendChild(btn);
+                }
+                lines.appendChild(lineDiv);
+              });
+            }
+            li.appendChild(lines);
+            list.appendChild(li);
+          });
+
+          wakaSection.appendChild(list);
+          output.appendChild(wakaSection);
+        });
+
+        console.log('Drawing graph with nodes:', nodes.size, 'links:', links.length);
+        drawGraph(Array.from(nodes.values()),links);
+      }catch(e){
+        console.error('Parse error:', e);
+        alert('エラーが発生しました: ' + e.message);
+      }
+    }
+
+    function showFacsImage(facs){
+      const viewer=document.getElementById('imageViewer');
+      viewer.innerHTML='<p style="color:#64748b">画像を読み込んでいます...</p>';
+
+      console.log('facs attribute:', facs);
+
+      const baseUrl=document.getElementById('baseUrl').value.trim();
+
+      if(/^https?:\/\//i.test(facs)){
+        const img=document.createElement('img');
+        img.src=facs;
+        viewer.innerHTML='';
+        viewer.appendChild(img);
+        return;
+      }
+
+      const idMatch=facs.match(/^#(.+)$/);
+      if(idMatch && currentTEIDoc){
+        const id=idMatch[1];
+        console.log('Looking for ID:', id);
+
+        const xpathResult = currentTEIDoc.evaluate(
+          `//*[@*[local-name()='id']='${id}']`,
+          currentTEIDoc,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+        );
+        const element = xpathResult.singleNodeValue;
+
+        if(element){
+          console.log('Found element:', element.tagName);
+
+          // surface要素の場合
+          if(element.tagName.toLowerCase()==='surface'){
+            console.log('Found surface element');
+            const graphic = element.getElementsByTagName('graphic')[0];
+
+            if(graphic){
+              const url = graphic.getAttribute('url');
+              console.log('Found graphic URL:', url);
+
+              if(url){
+                const img=document.createElement('img');
+                img.src=url;
+                img.onerror=()=>{ viewer.innerHTML='<p style="color:#ef4444">画像の読み込みに失敗しました。URL: '+url+'</p>'; };
+                img.onload=()=>{console.log('Image loaded successfully');};
+                viewer.innerHTML='';
+                viewer.appendChild(img);
+                return;
+              }
+            }
+
+            // sameAs属性からも試行
+            const sameAs = element.getAttribute('sameAs');
+            if(sameAs){
+              console.log('Trying sameAs URL:', sameAs);
+              const img=document.createElement('img');
+              img.src=sameAs;
+              img.onerror=()=>{ viewer.innerHTML='<p style="color:#ef4444">画像の読み込みに失敗しました。</p>'; };
+              viewer.innerHTML='';
+              viewer.appendChild(img);
+              return;
+            }
+          }
+
+          if(element.tagName.toLowerCase()==='zone'){
+            const ulx = element.getAttribute('ulx');
+            const uly = element.getAttribute('uly');
+            const lrx = element.getAttribute('lrx');
+            const lry = element.getAttribute('lry');
+
+            console.log('Zone coordinates:', {ulx, uly, lrx, lry});
+
+            let surface = element.parentElement;
+            while(surface && surface.tagName.toLowerCase()!=='surface'){
+              surface = surface.parentElement;
+            }
+
+            if(surface){
+              console.log('Found surface:', surface);
+              const graphic = surface.getElementsByTagName('graphic')[0];
+
+              if(graphic){
+                const url = graphic.getAttribute('url');
+                console.log('Found URL:', url);
+
+                if(url){
+                  let finalUrl = url;
+
+                  const iiifMatch = url.match(/^(.+\.tiff)\/full\/full\/0\/default\.jpg$/i);
+
+                  if(iiifMatch && ulx && uly && lrx && lry){
+                    const baseTiff = iiifMatch[1];
+                    const width = parseInt(lrx) - parseInt(ulx);
+                    const height = parseInt(lry) - parseInt(uly);
+                    const region = `${ulx},${uly},${width},${height}`;
+
+                    finalUrl = `${baseTiff}/${region}/full/0/default.jpg`;
+                    console.log('IIIF cropped URL:', finalUrl);
+                  }
+
+                  const img=document.createElement('img');
+                  img.src=finalUrl;
+                  img.onerror=()=>{ viewer.innerHTML='<p style="color:#ef4444">画像の読み込みに失敗しました。URL: '+finalUrl+'</p>'; };
+                  img.onload=()=>{console.log('Image loaded successfully');};
+                  viewer.innerHTML='';
+                  viewer.appendChild(img);
+                  return;
+                }
+              }
+            }
+          }
+
+          if(element.tagName.toLowerCase()==='graphic'){
+            const url=element.getAttribute('url')||element.getAttribute('href');
+            if(url){
+              const img=document.createElement('img');
+              img.src=url;
+              viewer.innerHTML='';
+              viewer.appendChild(img);
+              return;
+            }
+          }
+        }else{
+          console.log('Element not found for ID:', id);
+        }
+
+        if(baseUrl){
+          const attempt=baseUrl.replace(/\/$/,'')+'/'+id+'.jpg';
+          const img=document.createElement('img');
+          img.src=attempt;
+          viewer.innerHTML='';
+          viewer.appendChild(img);
+          return;
+        }
+      }
+
+      viewer.innerHTML='<p style="color:#ef4444">画像が見つかりませんでした。</p>';
+    }
+
+    function drawGraph(nodes,links){
+      if(nodes.length === 0) return;
+
+      const width=document.getElementById('graph').clientWidth;
+      const height=500;
+      const svg=d3.select('#graph').html('').append('svg').attr('width',width).attr('height',height)
+        .call(d3.zoom().scaleExtent([0.1,4]).on('zoom',(e)=>{container.attr('transform',e.transform)}));
+
+      const container=svg.append('g');
+      const sim=d3.forceSimulation(nodes)
+        .force('link',d3.forceLink(links).id(d=>d.id).distance(120))
+        .force('charge',d3.forceManyBody().strength(-300))
+        .force('center',d3.forceCenter(width/2,height/2));
+
+      svg.append('defs').append('marker')
+        .attr('id','arrow').attr('viewBox','0 -5 10 10')
+        .attr('refX',15).attr('refY',0).attr('markerWidth',6).attr('markerHeight',6).attr('orient','auto')
+        .append('path').attr('d','M0,-5L10,0L0,5').attr('fill','#94a3b8');
+
+      const link=container.selectAll('line').data(links).enter().append('line')
+        .attr('stroke','#94a3b8').attr('stroke-width',2).attr('marker-end','url(#arrow)');
+
+      const node=container.selectAll('circle').data(nodes).enter().append('circle')
+        .attr('r',20).attr('fill','#60a5fa').call(drag(sim));
+
+      const label=container.selectAll('text').data(nodes).enter().append('text')
+        .text(d=>d.id).attr('font-size',12).attr('dx',25).attr('dy',4);
+
+      sim.on('tick',()=>{
+        link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+            .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+        node.attr('cx',d=>d.x).attr('cy',d=>d.y);
+        label.attr('x',d=>d.x).attr('y',d=>d.y);
+      });
+
+      function drag(sim){
+        function dragstarted(e){if(!e.active)sim.alphaTarget(0.3).restart();e.subject.fx=e.subject.x;e.subject.fy=e.subject.y;}
+        function dragged(e){e.subject.fx=e.x;e.subject.fy=e.y;}
+        function dragended(e){if(!e.active)sim.alphaTarget(0);e.subject.fx=null;e.subject.fy=null;}
+        return d3.drag().on('start',dragstarted).on('drag',dragged).on('end',dragended);
+      }
+    }
+  </script>
+</body>
+</html>
