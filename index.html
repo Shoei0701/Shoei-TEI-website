@@ -106,9 +106,29 @@
     </div>
   </main>
   <script>
-function escapeHtml(s){return(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+ function escapeHtml(s){return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    let currentTEIDoc = null;
 
-let currentTEIDoc=null;
+    // ページロード時に自動で同ディレクトリの test.xml を読み込む
+    window.addEventListener('DOMContentLoaded', () => {
+      const defaultUrl = "Genji-karuta.xml"; // GitHub Pages 上で index.html と同じ階層に test.xml を置いている場合はこれでOK
+      console.log("🔍 Loading default TEI file:", defaultUrl);
+
+      fetch(defaultUrl)
+        .then(res => {
+          if(!res.ok) throw new Error(`XMLの取得に失敗しました (${res.status})`);
+          return res.text();
+        })
+        .then(xmlText => {
+          console.log("✅ 源氏かるた.xml を取得しました");
+          parseTEI(xmlText);
+        })
+        .catch(err => {
+          console.error("❌ 自動読み込みエラー:", err);
+          document.getElementById('outputArea').innerHTML =
+            `<p style='color:#ef4444'>源氏かるた.xml の自動読み込みに失敗しました。(${escapeHtml(err.message)})</p>`;
+        });
+    });
 
 document.getElementById('parseBtn').addEventListener('click',()=>{
   const f=document.getElementById('file').files[0];
