@@ -4,639 +4,3309 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>源氏かるたビューワー</title>
+
   <script src="https://d3js.org/d3.v7.min.js"></script>
+
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Hiragino Kaku Gothic ProN',Meiryo,sans-serif;background:#f6f8fb;color:#0b1220;margin:0}
-    header{background:linear-gradient(90deg,#f8fafc,#eef2ff);padding:18px 20px;border-bottom:1px solid #e2e8f0}
-    .wrap{max-width:1100px;margin:22px auto;padding:18px;background:white;border-radius:12px;box-shadow:0 6px 24px rgba(15,23,42,0.06)}
-    h1{margin:0 0 8px;font-size:18px}
-    .grid{display:grid;grid-template-columns:1fr 420px;gap:16px}
-    @media(max-width:768px){
-      .wrap{margin:12px;padding:12px}
-      h1{font-size:16px}
-      .grid{grid-template-columns:1fr;gap:12px}
-      .image-area{position:static;max-height:none}
-      #graph{height:400px}
-      .controls{flex-direction:column;align-items:stretch}
-      .controls label{width:100%}
-      .controls input[type="text"]{width:100%!important}
+    body{
+      font-family:
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        'Hiragino Kaku Gothic ProN',
+        Meiryo,
+        sans-serif;
+
+      background:#f6f8fb;
+      color:#0b1220;
+      margin:0;
     }
-    .panel{background:#fbfdff;padding:12px;border-radius:10px;border:1px solid #eef2ff;min-height:240px}
-    .image-area{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow-y:auto}
-    .tei-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-    .tei-header{background:#f0f9ff;padding:12px;border-radius:8px;border:1px solid #bae6fd;margin-bottom:16px}
-    .tei-header h4{margin:0 0 8px;font-size:14px;color:#0c4a6e}
-    .tei-header p{margin:4px 0;font-size:13px;color:#075985}
-    .section-title{background:#fef3c7;padding:12px;border-radius:8px;border:1px solid #fde68a;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
-    .section-title h4{margin:0;color:#78350f;font-size:16px}
-    .tei-item{padding:10px;border-radius:8px;background:white;border:1px solid #f1f5f9}
-    .meta{font-size:13px;color:#64748b;margin-bottom:8px}
-    a.person{color:#2563eb;text-decoration:none;font-weight:600;cursor:pointer}
-    a.person:hover{text-decoration:underline}
-    .lines{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;background:#fff;padding:10px;border-radius:8px;border:1px solid #f1f5f9}
-    .line{padding:6px 8px;border-radius:6px}
-    .image-area img{max-width:100%;border-radius:8px;border:1px solid #e6eef6;display:block;margin-bottom:12px}
-    #imageViewer{margin-bottom:16px;min-height:200px}
-    #graph{width:100%;height:500px;border:1px solid #e5e7eb;border-radius:8px;margin-top:12px;background:white}
-    button{padding:4px 8px;font-size:12px;background:#3b82f6;color:white;border:none;border-radius:4px;cursor:pointer}
-    button:hover{background:#2563eb}
-    .controls{margin-bottom:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .controls label{font-size:14px}
-    .controls input[type="text"]{padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px}
-    .waka-section{margin-bottom:24px}
-    .network-stats{background:#f0fdf4;padding:12px;border-radius:8px;border:1px solid #bbf7d0;margin-bottom:12px}
-    .network-stats h4{margin:0 0 8px;font-size:14px;color:#166534}
-    .network-stats p{margin:4px 0;font-size:13px;color:#15803d}
-    .legend{margin-top:12px;padding:8px;background:#fefce8;border-radius:6px;border:1px solid #fef08a}
-    .legend-item{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px}
+
+    header{
+      background:linear-gradient(90deg,#f8fafc,#eef2ff);
+      padding:18px 20px;
+      border-bottom:1px solid #e2e8f0;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:22px auto;
+      padding:18px;
+      background:white;
+      border-radius:12px;
+      box-shadow:0 6px 24px rgba(15,23,42,0.06);
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:16px;
+    }
+
+    @media(max-width:768px){
+
+      .wrap{
+        margin:12px;
+        padding:12px;
+      }
+
+      h1{
+        font-size:16px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .image-area{
+        position:static;
+        max-height:none;
+      }
+
+      #graph{
+        height:400px;
+      }
+
+      .controls{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .controls label{
+        width:100%;
+      }
+
+      .controls input[type="text"]{
+        width:100%!important;
+      }
+    }
+
+    .panel{
+      background:#fbfdff;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #eef2ff;
+      min-height:240px;
+    }
+
+    .image-area{
+      position:sticky;
+      top:16px;
+      align-self:start;
+      max-height:calc(100vh - 32px);
+      overflow-y:auto;
+    }
+
+    .tei-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .tei-header{
+      background:#f0f9ff;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #bae6fd;
+      margin-bottom:16px;
+    }
+
+    .tei-header h4{
+      margin:0 0 8px;
+      font-size:14px;
+      color:#0c4a6e;
+    }
+
+    .tei-header p{
+      margin:4px 0;
+      font-size:13px;
+      color:#075985;
+    }
+
+    .section-title{
+      background:#fef3c7;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #fde68a;
+      margin-bottom:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .section-title h4{
+      margin:0;
+      color:#78350f;
+      font-size:16px;
+    }
+
+    .tei-item{
+      padding:10px;
+      border-radius:8px;
+      background:white;
+      border:1px solid #f1f5f9;
+    }
+
+    .meta{
+      font-size:13px;
+      color:#64748b;
+      margin-bottom:8px;
+    }
+
+    a.person{
+      color:#2563eb;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    a.person:hover{
+      text-decoration:underline;
+    }
+
+    .lines{
+      font-family:
+        "Hiragino Mincho ProN",
+        "Yu Mincho",
+        serif;
+
+      background:#fff;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #f1f5f9;
+    }
+
+    .line{
+      padding:6px 8px;
+      border-radius:6px;
+    }
+
+    .image-area img{
+      max-width:100%;
+      border-radius:8px;
+      border:1px solid #e6eef6;
+      display:block;
+      margin-bottom:12px;
+    }
+
+    #imageViewer{
+      margin-bottom:16px;
+      min-height:200px;
+    }
+
+    #graph{
+      width:100%;
+      height:500px;
+      border:1px solid #e5e7eb;
+      border-radius:8px;
+      margin-top:12px;
+      background:white;
+      overflow:hidden;
+    }
+
+    button{
+      padding:4px 8px;
+      font-size:12px;
+      background:#3b82f6;
+      color:white;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#2563eb;
+    }
+
+    .controls{
+      margin-bottom:16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .controls label{
+      font-size:14px;
+    }
+
+    .controls input[type="text"]{
+      padding:4px 8px;
+      border:1px solid #cbd5e1;
+      border-radius:4px;
+    }
+
+    .waka-section{
+      margin-bottom:24px;
+    }
+
+    .network-stats{
+      background:#f0fdf4;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #bbf7d0;
+      margin-bottom:12px;
+    }
+
+    .network-stats h4{
+      margin:0 0 8px;
+      font-size:14px;
+      color:#166534;
+    }
+
+    .network-stats p{
+      margin:4px 0;
+      font-size:13px;
+      color:#15803d;
+    }
+
+    .legend{
+      margin-top:12px;
+      padding:8px;
+      background:#fefce8;
+      border-radius:6px;
+      border:1px solid #fef08a;
+    }
+
+    .legend-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin:4px 0;
+      font-size:12px;
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="wrap" style="background:transparent;padding:0">
-      <h1>源氏かるた発話ネットワークビューワー</h1>
-      <p>TEIの<code>who</code>(発話者)→<code>toWhom</code>(受け手)の有向発話関係をネットワークグラフで可視化します。</p>
-    </div>
-  </header>
-  <main class="wrap">
-    <div class="controls">
-      <label>TEIファイル:<input id="file" type="file" accept=".xml,text/xml,application/xml"></label>
-      <label>画像ベースURL:<input id="baseUrl" type="text" placeholder="https://example.com/images/" style="width:250px"></label>
-      <button id="parseBtn">解析</button>
-    </div>
-    <div class="grid">
-      <section class="panel">
-        <h3>テキスト</h3>
-        <div id="outputArea"><p>まだファイルが読み込まれていません。</p></div>
-      </section>
-      <aside class="panel image-area">
-        <h3>画像プレビュー</h3>
-        <div id="imageViewer"><p style="color:#64748b">画像ボタンをクリックしてください。</p></div>
-        <div class="network-stats" id="networkStats" style="display:none">
-          <h4>発話ネットワーク統計</h4>
-          <p id="nodeCount"></p>
-          <p id="edgeCount"></p>
-          <p id="uniqueEdgeCount"></p>
+
+<header>
+
+  <div
+    class="wrap"
+    style="background:transparent;padding:0"
+  >
+
+    <h1>
+      源氏かるた発話ネットワークビューワー
+    </h1>
+
+    <p>
+      TEIの
+      <code>who</code>
+      （発話者）→
+      <code>toWhom</code>
+      （受け手）の有向発話関係を
+      ネットワークグラフで可視化します。
+    </p>
+
+  </div>
+
+</header>
+
+
+<main class="wrap">
+
+  <div class="controls">
+
+    <label>
+      TEIファイル:
+      <input
+        id="file"
+        type="file"
+        accept=".xml,text/xml,application/xml"
+      >
+    </label>
+
+    <label>
+      画像ベースURL:
+      <input
+        id="baseUrl"
+        type="text"
+        placeholder="https://example.com/images/"
+        style="width:250px"
+      >
+    </label>
+
+    <button id="parseBtn">
+      解析
+    </button>
+
+  </div>
+
+
+  <div class="grid">
+
+
+    <!-- 左側 -->
+    <section class="panel">
+
+      <h3>
+        テキスト
+      </h3>
+
+      <div id="outputArea">
+
+        <p>
+          まだファイルが読み込まれていません。
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- 右側 -->
+    <aside class="panel image-area">
+
+      <h3>
+        画像プレビュー
+      </h3>
+
+      <div id="imageViewer">
+
+        <p style="color:#64748b">
+          画像ボタンをクリックしてください。
+        </p>
+
+      </div>
+
+
+      <div
+        class="network-stats"
+        id="networkStats"
+        style="display:none"
+      >
+
+        <h4>
+          発話ネットワーク統計
+        </h4>
+
+        <p id="nodeCount"></p>
+
+        <p id="edgeCount"></p>
+
+        <p id="uniqueEdgeCount"></p>
+
+      </div>
+
+
+      <div class="legend">
+
+        <div class="legend-item">
+
+          <svg
+            width="34"
+            height="10"
+          >
+
+            <line
+              x1="0"
+              y1="5"
+              x2="27"
+              y2="5"
+              stroke="#3b82f6"
+              stroke-width="3"
+            />
+
+            <polygon
+              points="33,5 27,1 27,9"
+              fill="#3b82f6"
+            />
+
+          </svg>
+
+          <span>
+            発話関係（太さ＝回数）
+          </span>
+
         </div>
-        <div class="legend">
-          <div class="legend-item">
-            <svg width="30" height="10">
-              <line x1="0" y1="5" x2="25" y2="5" stroke="#3b82f6" stroke-width="2"/>
-              <polygon points="30,5 25,2 25,8" fill="#3b82f6"/>
-            </svg>
-            <span>単方向（太さ＝回数）</span>
-          </div>
-          <div class="legend-item">
-            <svg width="30" height="15">
-              <path d="M0,4 Q15,0 30,4" stroke="#10b981" stroke-width="2" fill="none"/>
-              <polygon points="30,4 26,2 26,6" fill="#10b981"/>
-              <path d="M30,11 Q15,15 0,11" stroke="#f59e0b" stroke-width="2" fill="none"/>
-              <polygon points="0,11 4,9 4,13" fill="#f59e0b"/>
-            </svg>
-            <span>双方向（曲線で分離）</span>
-          </div>
-          <div class="legend-item">
-            <svg width="20" height="20"><circle cx="10" cy="10" r="8" fill="#60a5fa"/></svg>
-            <span>人物（サイズ＝発話数）</span>
-          </div>
+
+
+        <div class="legend-item">
+
+          <svg
+            width="34"
+            height="18"
+          >
+
+            <path
+              d="M1,5 Q17,0 33,5"
+              stroke="#3b82f6"
+              stroke-width="2"
+              fill="none"
+            />
+
+            <path
+              d="M33,13 Q17,18 1,13"
+              stroke="#3b82f6"
+              stroke-width="2"
+              fill="none"
+            />
+
+          </svg>
+
+          <span>
+            双方向（曲線で分離）
+          </span>
+
         </div>
-        <h3>発話ネットワークグラフ</h3>
-        <div id="graph"></div>
-      </aside>
-    </div>
-  </main>
-  <script>
- function escapeHtml(s){return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-    let currentTEIDoc = null;
 
-    // ページロード時に自動で同ディレクトリの test.xml を読み込む
-    window.addEventListener('DOMContentLoaded', () => {
-      const defaultUrl = "Genji-karuta.xml"; // GitHub Pages 上で index.html と同じ階層に test.xml を置いている場合はこれでOK
-      console.log("🔍 Loading default TEI file:", defaultUrl);
 
-      fetch(defaultUrl)
-        .then(res => {
-          if(!res.ok) throw new Error(`XMLの取得に失敗しました (${res.status})`);
-          return res.text();
-        })
-        .then(xmlText => {
-          console.log("✅ 源氏かるた.xml を取得しました");
-          parseTEI(xmlText);
-        })
-        .catch(err => {
-          console.error("❌ 自動読み込みエラー:", err);
-          document.getElementById('outputArea').innerHTML =
-            `<p style='color:#ef4444'>源氏かるた.xml の自動読み込みに失敗しました。(${escapeHtml(err.message)})</p>`;
-        });
-    });
+        <div class="legend-item">
 
-document.getElementById('parseBtn').addEventListener('click',()=>{
-  const f=document.getElementById('file').files[0];
-  if(!f){alert('ファイルを選択してください');return}
-  const r=new FileReader();
-  r.onload=e=>parseTEI(e.target.result);
-  r.readAsText(f,'utf-8');
-});
+          <svg
+            width="34"
+            height="25"
+          >
+
+            <circle
+              cx="17"
+              cy="16"
+              r="6"
+              fill="#60a5fa"
+            />
+
+            <path
+              d="M21,12 C30,1 4,1 13,12"
+              stroke="#3b82f6"
+              stroke-width="2"
+              fill="none"
+            />
+
+          </svg>
+
+          <span>
+            同一人物（自己回帰）
+          </span>
+
+        </div>
+
+
+        <div class="legend-item">
+
+          <svg
+            width="20"
+            height="20"
+          >
+
+            <circle
+              cx="10"
+              cy="10"
+              r="8"
+              fill="#60a5fa"
+            />
+
+          </svg>
+
+          <span>
+            人物（サイズ＝発話数）
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <h3>
+        発話ネットワークグラフ
+      </h3>
+
+      <div id="graph"></div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<script>
+
+
+function escapeHtml(s){
+
+  return (s || '').replace(
+    /[&<>"']/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c])
+  );
+
+}
+
+
+let currentTEIDoc = null;
+
+
+
+/* ========================================
+   初期読み込み
+======================================== */
+
+window.addEventListener(
+  'DOMContentLoaded',
+  () => {
+
+    const defaultUrl =
+      "Genji-karuta.xml";
+
+    console.log(
+      "🔍 Loading default TEI file:",
+      defaultUrl
+    );
+
+
+    fetch(defaultUrl)
+
+      .then(res => {
+
+        if(!res.ok){
+
+          throw new Error(
+            `XMLの取得に失敗しました (${res.status})`
+          );
+
+        }
+
+        return res.text();
+
+      })
+
+      .then(xmlText => {
+
+        console.log(
+          "✅ Genji-karuta.xml を取得しました"
+        );
+
+        parseTEI(xmlText);
+
+      })
+
+      .catch(err => {
+
+        console.error(
+          "❌ 自動読み込みエラー:",
+          err
+        );
+
+        document
+          .getElementById('outputArea')
+          .innerHTML =
+          `<p style='color:#ef4444'>
+            Genji-karuta.xml の自動読み込みに失敗しました。
+            (${escapeHtml(err.message)})
+          </p>`;
+
+      });
+
+  }
+);
+
+
+
+/* ========================================
+   手動ファイル読み込み
+======================================== */
+
+document
+  .getElementById('parseBtn')
+  .addEventListener(
+    'click',
+    () => {
+
+      const f =
+        document
+          .getElementById('file')
+          .files[0];
+
+      if(!f){
+
+        alert(
+          'ファイルを選択してください'
+        );
+
+        return;
+
+      }
+
+
+      const r =
+        new FileReader();
+
+
+      r.onload =
+        e => parseTEI(
+          e.target.result
+        );
+
+
+      r.readAsText(
+        f,
+        'utf-8'
+      );
+
+    }
+  );
+
+
+
+/* ========================================
+   TEI解析
+======================================== */
 
 function parseTEI(xmlText){
+
   try{
-    const parser=new DOMParser();
-    const doc=parser.parseFromString(xmlText,'application/xml');
-    currentTEIDoc=doc;
-    
-    const output=document.getElementById('outputArea');
-    const imageViewer=document.getElementById('imageViewer');
-    output.innerHTML='';
-    imageViewer.innerHTML='<p style="color:#64748b">画像ボタンをクリックしてください。</p>';
-    
-    let rawLinks=[];
-    let nodeMap=new Map();
-    
-    const teiHeader=doc.querySelector('teiHeader');
+
+
+    const parser =
+      new DOMParser();
+
+
+    const doc =
+      parser.parseFromString(
+        xmlText,
+        'application/xml'
+      );
+
+
+    currentTEIDoc =
+      doc;
+
+
+
+    const output =
+      document
+        .getElementById(
+          'outputArea'
+        );
+
+
+    const imageViewer =
+      document
+        .getElementById(
+          'imageViewer'
+        );
+
+
+    output.innerHTML =
+      '';
+
+
+    imageViewer.innerHTML =
+      '<p style="color:#64748b">画像ボタンをクリックしてください。</p>';
+
+
+
+    let rawLinks =
+      [];
+
+
+    let nodeMap =
+      new Map();
+
+
+
+    /* ====================================
+       TEI Header
+    ==================================== */
+
+    const teiHeader =
+      doc.querySelector(
+        'teiHeader'
+      );
+
+
     if(teiHeader){
-      const headerDiv=document.createElement('div');
-      headerDiv.className='tei-header';
-      const title=teiHeader.querySelector('title');
-      const author=teiHeader.querySelector('author');
-      const date=teiHeader.querySelector('date');
-      const publisher=teiHeader.querySelector('publisher');
-      let headerHTML='<h4>文書情報</h4>';
-      if(title)headerHTML+=`<p><strong>タイトル:</strong> ${escapeHtml(title.textContent.trim())}</p>`;
-      if(author)headerHTML+=`<p><strong>著者:</strong> ${escapeHtml(author.textContent.trim())}</p>`;
-      if(date)headerHTML+=`<p><strong>日付:</strong> ${escapeHtml(date.textContent.trim())}</p>`;
-      if(publisher)headerHTML+=`<p><strong>出版者:</strong> ${escapeHtml(publisher.textContent.trim())}</p>`;
-      headerDiv.innerHTML=headerHTML;
-      output.appendChild(headerDiv);
+
+
+      const headerDiv =
+        document.createElement(
+          'div'
+        );
+
+
+      headerDiv.className =
+        'tei-header';
+
+
+      const title =
+        teiHeader.querySelector(
+          'title'
+        );
+
+
+      const author =
+        teiHeader.querySelector(
+          'author'
+        );
+
+
+      const date =
+        teiHeader.querySelector(
+          'date'
+        );
+
+
+      const publisher =
+        teiHeader.querySelector(
+          'publisher'
+        );
+
+
+      let headerHTML =
+        '<h4>文書情報</h4>';
+
+
+      if(title){
+
+        headerHTML +=
+          `<p>
+            <strong>タイトル:</strong>
+            ${escapeHtml(
+              title.textContent.trim()
+            )}
+          </p>`;
+
+      }
+
+
+      if(author){
+
+        headerHTML +=
+          `<p>
+            <strong>著者:</strong>
+            ${escapeHtml(
+              author.textContent.trim()
+            )}
+          </p>`;
+
+      }
+
+
+      if(date){
+
+        headerHTML +=
+          `<p>
+            <strong>日付:</strong>
+            ${escapeHtml(
+              date.textContent.trim()
+            )}
+          </p>`;
+
+      }
+
+
+      if(publisher){
+
+        headerHTML +=
+          `<p>
+            <strong>出版者:</strong>
+            ${escapeHtml(
+              publisher.textContent.trim()
+            )}
+          </p>`;
+
+      }
+
+
+      headerDiv.innerHTML =
+        headerHTML;
+
+
+      output.appendChild(
+        headerDiv
+      );
+
     }
-    
-    const divElements=Array.from(doc.querySelectorAll('div[type="waka"]'));
-    console.log('Found divs:',divElements.length);
-    
-    divElements.forEach((divEl,idx)=>{
-      const wakaSection=document.createElement('div');
-      wakaSection.className='waka-section';
-      
-      const head=divEl.querySelector('head');
-      if(head){
-        const titleDiv=document.createElement('div');
-        titleDiv.className='section-title';
-        const headText=head.textContent.trim();
-        const headFacs=head.getAttribute('facs');
-        const titleH4=document.createElement('h4');
-        titleH4.textContent=headText;
-        titleDiv.appendChild(titleH4);
-        if(headFacs){
-          const btn=document.createElement('button');
-          btn.textContent='全体画像を表示';
-          btn.onclick=()=>showFacsImage(headFacs);
-          titleDiv.appendChild(btn);
-        }
-        wakaSection.appendChild(titleDiv);
-      }
-      
-      const saidsInDiv=Array.from(divEl.getElementsByTagName('said'));
-      console.log('Found saids:',saidsInDiv.length);
-      
-      const list=document.createElement('ul');
-      list.className='tei-list';
-      
-      saidsInDiv.forEach(said=>{
-        const who=said.getAttribute('who');
-        const toWhom=said.getAttribute('toWhom');
-        
-        if(who){
-          if(!nodeMap.has(who)){
-            nodeMap.set(who,{id:who,utteranceCount:0,receivedCount:0});
+
+
+
+    /* ====================================
+       和歌単位
+    ==================================== */
+
+    const divElements =
+      Array.from(
+        doc.querySelectorAll(
+          'div[type="waka"]'
+        )
+      );
+
+
+    console.log(
+      'Found divs:',
+      divElements.length
+    );
+
+
+
+    divElements.forEach(
+      (divEl,idx) => {
+
+
+        const wakaSection =
+          document.createElement(
+            'div'
+          );
+
+
+        wakaSection.className =
+          'waka-section';
+
+
+
+        /* --------------------------------
+           見出し
+        -------------------------------- */
+
+        const head =
+          divEl.querySelector(
+            'head'
+          );
+
+
+        if(head){
+
+
+          const titleDiv =
+            document.createElement(
+              'div'
+            );
+
+
+          titleDiv.className =
+            'section-title';
+
+
+          const headText =
+            head.textContent.trim();
+
+
+          const headFacs =
+            head.getAttribute(
+              'facs'
+            );
+
+
+          const titleH4 =
+            document.createElement(
+              'h4'
+            );
+
+
+          titleH4.textContent =
+            headText;
+
+
+          titleDiv.appendChild(
+            titleH4
+          );
+
+
+          if(headFacs){
+
+
+            const btn =
+              document.createElement(
+                'button'
+              );
+
+
+            btn.textContent =
+              '全体画像を表示';
+
+
+            btn.onclick =
+              () =>
+                showFacsImage(
+                  headFacs
+                );
+
+
+            titleDiv.appendChild(
+              btn
+            );
+
           }
-          nodeMap.get(who).utteranceCount++;
+
+
+          wakaSection.appendChild(
+            titleDiv
+          );
+
         }
-        if(toWhom){
-          if(!nodeMap.has(toWhom)){
-            nodeMap.set(toWhom,{id:toWhom,utteranceCount:0,receivedCount:0});
-          }
-          nodeMap.get(toWhom).receivedCount++;
-        }
-        
-        if(who&&toWhom){
-          rawLinks.push({source:who,target:toWhom});
-        }
-        
-        const li=document.createElement('li');
-        li.className='tei-item';
-        
-        const metaDiv=document.createElement('div');
-        metaDiv.className='meta';
-        metaDiv.innerHTML=`発話者: <a class='person'>${escapeHtml(who)}</a> → 受け手: <a class='person'>${escapeHtml(toWhom)}</a>`;
-        li.appendChild(metaDiv);
-        
-        const lg=said.querySelector('lg');
-        const lines=document.createElement('div');
-        lines.className='lines';
-        if(lg){
-          lg.querySelectorAll('l').forEach(l=>{
-            const lineDiv=document.createElement('div');
-            lineDiv.className='line';
-            lineDiv.textContent=l.textContent.trim();
-            const facs=l.getAttribute('facs');
-            if(facs){
-              const btn=document.createElement('button');
-              btn.textContent='画像を表示';
-              btn.style.marginLeft='8px';
-              btn.onclick=()=>showFacsImage(facs);
-              lineDiv.appendChild(btn);
+
+
+
+        /* --------------------------------
+           said
+        -------------------------------- */
+
+        const saidsInDiv =
+          Array.from(
+            divEl
+              .getElementsByTagName(
+                'said'
+              )
+          );
+
+
+        console.log(
+          'Found saids:',
+          saidsInDiv.length
+        );
+
+
+
+        const list =
+          document.createElement(
+            'ul'
+          );
+
+
+        list.className =
+          'tei-list';
+
+
+
+        saidsInDiv.forEach(
+          said => {
+
+
+            const who =
+              said.getAttribute(
+                'who'
+              );
+
+
+            const toWhom =
+              said.getAttribute(
+                'toWhom'
+              );
+
+
+
+            /* ----------------------------
+               発話者
+            ---------------------------- */
+
+            if(who){
+
+
+              if(
+                !nodeMap.has(who)
+              ){
+
+                nodeMap.set(
+                  who,
+                  {
+                    id:who,
+                    utteranceCount:0,
+                    receivedCount:0
+                  }
+                );
+
+              }
+
+
+              nodeMap
+                .get(who)
+                .utteranceCount++;
+
             }
-            lines.appendChild(lineDiv);
-          });
+
+
+
+            /* ----------------------------
+               受け手
+            ---------------------------- */
+
+            if(toWhom){
+
+
+              if(
+                !nodeMap.has(toWhom)
+              ){
+
+                nodeMap.set(
+                  toWhom,
+                  {
+                    id:toWhom,
+                    utteranceCount:0,
+                    receivedCount:0
+                  }
+                );
+
+              }
+
+
+              nodeMap
+                .get(toWhom)
+                .receivedCount++;
+
+            }
+
+
+
+            /* ----------------------------
+               リンク
+            ---------------------------- */
+
+            if(
+              who &&
+              toWhom
+            ){
+
+              rawLinks.push(
+                {
+                  source:who,
+                  target:toWhom
+                }
+              );
+
+            }
+
+
+
+            /* ----------------------------
+               テキスト表示
+            ---------------------------- */
+
+            const li =
+              document.createElement(
+                'li'
+              );
+
+
+            li.className =
+              'tei-item';
+
+
+
+            const metaDiv =
+              document.createElement(
+                'div'
+              );
+
+
+            metaDiv.className =
+              'meta';
+
+
+            metaDiv.innerHTML =
+              `
+                発話者:
+                <a class='person'>
+                  ${escapeHtml(who)}
+                </a>
+                →
+                受け手:
+                <a class='person'>
+                  ${escapeHtml(toWhom)}
+                </a>
+              `;
+
+
+            li.appendChild(
+              metaDiv
+            );
+
+
+
+            const lg =
+              said.querySelector(
+                'lg'
+              );
+
+
+            const lines =
+              document.createElement(
+                'div'
+              );
+
+
+            lines.className =
+              'lines';
+
+
+
+            if(lg){
+
+
+              lg
+                .querySelectorAll(
+                  'l'
+                )
+                .forEach(
+                  l => {
+
+
+                    const lineDiv =
+                      document
+                        .createElement(
+                          'div'
+                        );
+
+
+                    lineDiv.className =
+                      'line';
+
+
+                    lineDiv.textContent =
+                      l.textContent.trim();
+
+
+
+                    const facs =
+                      l.getAttribute(
+                        'facs'
+                      );
+
+
+                    if(facs){
+
+
+                      const btn =
+                        document
+                          .createElement(
+                            'button'
+                          );
+
+
+                      btn.textContent =
+                        '画像を表示';
+
+
+                      btn.style.marginLeft =
+                        '8px';
+
+
+                      btn.onclick =
+                        () =>
+                          showFacsImage(
+                            facs
+                          );
+
+
+                      lineDiv.appendChild(
+                        btn
+                      );
+
+                    }
+
+
+                    lines.appendChild(
+                      lineDiv
+                    );
+
+                  }
+                );
+
+            }
+
+
+            li.appendChild(
+              lines
+            );
+
+
+            list.appendChild(
+              li
+            );
+
+          }
+        );
+
+
+
+        wakaSection.appendChild(
+          list
+        );
+
+
+        output.appendChild(
+          wakaSection
+        );
+
+
+      }
+    );
+
+
+
+    /* ====================================
+       エッジ集約
+    ==================================== */
+
+    const linkMap =
+      new Map();
+
+
+    rawLinks.forEach(
+      link => {
+
+
+        const key =
+          `${link.source}→${link.target}`;
+
+
+        if(
+          !linkMap.has(key)
+        ){
+
+          linkMap.set(
+            key,
+            {
+              source:link.source,
+              target:link.target,
+              count:0
+            }
+          );
+
         }
-        li.appendChild(lines);
-        list.appendChild(li);
-      });
-      
-      wakaSection.appendChild(list);
-      output.appendChild(wakaSection);
-    });
-    
-    // エッジを集約
-    const linkMap=new Map();
-    rawLinks.forEach(link=>{
-      const key=`${link.source}→${link.target}`;
-      if(!linkMap.has(key)){
-        linkMap.set(key,{source:link.source,target:link.target,count:0});
+
+
+        linkMap
+          .get(key)
+          .count++;
+
+
       }
-      linkMap.get(key).count++;
-    });
-    
-    const aggregatedLinks=Array.from(linkMap.values());
-    
-    // 双方向チェック
-    aggregatedLinks.forEach(link=>{
-      const reverseKey=`${link.target}→${link.source}`;
-      link.bidirectional=linkMap.has(reverseKey);
-      if(link.bidirectional){
-        link.reverseCount=linkMap.get(reverseKey).count;
+    );
+
+
+
+    const aggregatedLinks =
+      Array.from(
+        linkMap.values()
+      );
+
+
+
+    /* ====================================
+       双方向判定
+       自己回帰は双方向にしない
+    ==================================== */
+
+    aggregatedLinks.forEach(
+      link => {
+
+
+        const reverseKey =
+          `${link.target}→${link.source}`;
+
+
+        link.bidirectional =
+          link.source !== link.target &&
+          linkMap.has(
+            reverseKey
+          );
+
+
       }
-    });
-    
-    const nodes=Array.from(nodeMap.values());
-    
-    const statsDiv=document.getElementById('networkStats');
-    statsDiv.style.display='block';
-    document.getElementById('nodeCount').textContent=`登場人物数: ${nodes.length}人`;
-    document.getElementById('edgeCount').textContent=`総発話数: ${rawLinks.length}件`;
-    document.getElementById('uniqueEdgeCount').textContent=`ユニークな関係: ${aggregatedLinks.length}`;
-    
-    console.log('Drawing network:',nodes.length,'nodes,',aggregatedLinks.length,'links');
-    drawUtteranceNetwork(nodes,aggregatedLinks);
-    
-  }catch(e){
-    console.error('Parse error:',e);
-    alert('エラーが発生しました: '+e.message);
+    );
+
+
+
+    const nodes =
+      Array.from(
+        nodeMap.values()
+      );
+
+
+
+    /* ====================================
+       統計表示
+    ==================================== */
+
+    const statsDiv =
+      document
+        .getElementById(
+          'networkStats'
+        );
+
+
+    statsDiv.style.display =
+      'block';
+
+
+
+    document
+      .getElementById(
+        'nodeCount'
+      )
+      .textContent =
+      `登場人物数: ${nodes.length}人`;
+
+
+
+    document
+      .getElementById(
+        'edgeCount'
+      )
+      .textContent =
+      `総発話数: ${rawLinks.length}件`;
+
+
+
+    document
+      .getElementById(
+        'uniqueEdgeCount'
+      )
+      .textContent =
+      `ユニークな関係: ${aggregatedLinks.length}`;
+
+
+
+    console.log(
+      'Drawing network:',
+      nodes.length,
+      'nodes,',
+      aggregatedLinks.length,
+      'links'
+    );
+
+
+
+    drawUtteranceNetwork(
+      nodes,
+      aggregatedLinks
+    );
+
+
   }
+  catch(e){
+
+
+    console.error(
+      'Parse error:',
+      e
+    );
+
+
+    alert(
+      'エラーが発生しました: ' +
+      e.message
+    );
+
+
+  }
+
 }
+
+
+
+/* ========================================
+   画像表示
+======================================== */
 
 function showFacsImage(facs){
-  const viewer=document.getElementById('imageViewer');
-  viewer.innerHTML='<p style="color:#64748b">画像を読み込んでいます...</p>';
-  
-  const baseUrl=document.getElementById('baseUrl').value.trim();
-  
-  if(/^https?:\/\//i.test(facs)){
-    const img=document.createElement('img');
-    img.src=facs;
-    viewer.innerHTML='';
-    viewer.appendChild(img);
-    return;
-  }
-  
-  const idMatch=facs.match(/^#(.+)$/);
-  if(idMatch&&currentTEIDoc){
-    const id=idMatch[1];
-    const xpathResult=currentTEIDoc.evaluate(
-      `//*[@*[local-name()='id']='${id}']`,
-      currentTEIDoc,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null
+
+
+  const viewer =
+    document
+      .getElementById(
+        'imageViewer'
+      );
+
+
+  viewer.innerHTML =
+    '<p style="color:#64748b">画像を読み込んでいます...</p>';
+
+
+
+  const baseUrl =
+    document
+      .getElementById(
+        'baseUrl'
+      )
+      .value
+      .trim();
+
+
+
+  /* --------------------------------------
+     URLが直接指定されている場合
+  -------------------------------------- */
+
+  if(
+    /^https?:\/\//i.test(
+      facs
+    )
+  ){
+
+
+    const img =
+      document.createElement(
+        'img'
+      );
+
+
+    img.src =
+      facs;
+
+
+    viewer.innerHTML =
+      '';
+
+
+    viewer.appendChild(
+      img
     );
-    const element=xpathResult.singleNodeValue;
-    
-    if(element){
-      if(element.tagName.toLowerCase()==='surface'){
-        const graphic=element.getElementsByTagName('graphic')[0];
-        if(graphic){
-          const url=graphic.getAttribute('url');
-          if(url){
-            const img=document.createElement('img');
-            img.src=url;
-            img.onerror=()=>{viewer.innerHTML='<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';};
-            viewer.innerHTML='';
-            viewer.appendChild(img);
-            return;
-          }
-        }
-        const sameAs=element.getAttribute('sameAs');
-        if(sameAs){
-          const img=document.createElement('img');
-          img.src=sameAs;
-          img.onerror=()=>{viewer.innerHTML='<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';};
-          viewer.innerHTML='';
-          viewer.appendChild(img);
-          return;
-        }
-      }
-      
-      if(element.tagName.toLowerCase()==='zone'){
-        const ulx=element.getAttribute('ulx');
-        const uly=element.getAttribute('uly');
-        const lrx=element.getAttribute('lrx');
-        const lry=element.getAttribute('lry');
-        
-        let surface=element.parentElement;
-        while(surface&&surface.tagName.toLowerCase()!=='surface'){
-          surface=surface.parentElement;
-        }
-        
-        if(surface){
-          const graphic=surface.getElementsByTagName('graphic')[0];
-          if(graphic){
-            const url=graphic.getAttribute('url');
-            if(url){
-              let finalUrl=url;
-              const iiifMatch=url.match(/^(.+\.tiff)\/full\/full\/0\/default\.jpg$/i);
-              if(iiifMatch&&ulx&&uly&&lrx&&lry){
-                const baseTiff=iiifMatch[1];
-                const width=parseInt(lrx)-parseInt(ulx);
-                const height=parseInt(lry)-parseInt(uly);
-                const region=`${ulx},${uly},${width},${height}`;
-                finalUrl=`${baseTiff}/${region}/full/0/default.jpg`;
-              }
-              const img=document.createElement('img');
-              img.src=finalUrl;
-              img.onerror=()=>{viewer.innerHTML='<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';};
-              viewer.innerHTML='';
-              viewer.appendChild(img);
-              return;
-            }
-          }
-        }
-      }
-      
-      if(element.tagName.toLowerCase()==='graphic'){
-        const url=element.getAttribute('url')||element.getAttribute('href');
-        if(url){
-          const img=document.createElement('img');
-          img.src=url;
-          viewer.innerHTML='';
-          viewer.appendChild(img);
-          return;
-        }
-      }
-    }
-    
-    if(baseUrl){
-      const attempt=baseUrl.replace(/\/$/,'')+'/'+id+'.jpg';
-      const img=document.createElement('img');
-      img.src=attempt;
-      viewer.innerHTML='';
-      viewer.appendChild(img);
-      return;
-    }
+
+
+    return;
+
   }
-  
-  viewer.innerHTML='<p style="color:#ef4444">画像が見つかりませんでした。</p>';
+
+
+
+  /* --------------------------------------
+     #ID指定
+  -------------------------------------- */
+
+  const idMatch =
+    facs.match(
+      /^#(.+)$/
+    );
+
+
+  if(
+    idMatch &&
+    currentTEIDoc
+  ){
+
+
+    const id =
+      idMatch[1];
+
+
+
+    const xpathResult =
+      currentTEIDoc.evaluate(
+
+        `//*[@*[local-name()='id']='${id}']`,
+
+        currentTEIDoc,
+
+        null,
+
+        XPathResult
+          .FIRST_ORDERED_NODE_TYPE,
+
+        null
+
+      );
+
+
+
+    const element =
+      xpathResult
+        .singleNodeValue;
+
+
+
+    if(element){
+
+
+
+      /* ----------------------------------
+         surface
+      ---------------------------------- */
+
+      if(
+        element
+          .tagName
+          .toLowerCase()
+        ===
+        'surface'
+      ){
+
+
+        const graphic =
+          element
+            .getElementsByTagName(
+              'graphic'
+            )[0];
+
+
+
+        if(graphic){
+
+
+          const url =
+            graphic
+              .getAttribute(
+                'url'
+              );
+
+
+          if(url){
+
+
+            const img =
+              document
+                .createElement(
+                  'img'
+                );
+
+
+            img.src =
+              url;
+
+
+            img.onerror =
+              () => {
+
+                viewer.innerHTML =
+                  '<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';
+
+              };
+
+
+            viewer.innerHTML =
+              '';
+
+
+            viewer.appendChild(
+              img
+            );
+
+
+            return;
+
+          }
+
+        }
+
+
+
+        const sameAs =
+          element
+            .getAttribute(
+              'sameAs'
+            );
+
+
+        if(sameAs){
+
+
+          const img =
+            document
+              .createElement(
+                'img'
+              );
+
+
+          img.src =
+            sameAs;
+
+
+          img.onerror =
+            () => {
+
+              viewer.innerHTML =
+                '<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';
+
+            };
+
+
+          viewer.innerHTML =
+            '';
+
+
+          viewer.appendChild(
+            img
+          );
+
+
+          return;
+
+        }
+
+      }
+
+
+
+      /* ----------------------------------
+         zone
+      ---------------------------------- */
+
+      if(
+        element
+          .tagName
+          .toLowerCase()
+        ===
+        'zone'
+      ){
+
+
+        const ulx =
+          element.getAttribute(
+            'ulx'
+          );
+
+
+        const uly =
+          element.getAttribute(
+            'uly'
+          );
+
+
+        const lrx =
+          element.getAttribute(
+            'lrx'
+          );
+
+
+        const lry =
+          element.getAttribute(
+            'lry'
+          );
+
+
+
+        let surface =
+          element.parentElement;
+
+
+
+        while(
+          surface &&
+          surface
+            .tagName
+            .toLowerCase()
+          !==
+          'surface'
+        ){
+
+          surface =
+            surface.parentElement;
+
+        }
+
+
+
+        if(surface){
+
+
+          const graphic =
+            surface
+              .getElementsByTagName(
+                'graphic'
+              )[0];
+
+
+
+          if(graphic){
+
+
+            const url =
+              graphic
+                .getAttribute(
+                  'url'
+                );
+
+
+
+            if(url){
+
+
+              let finalUrl =
+                url;
+
+
+
+              const iiifMatch =
+                url.match(
+                  /^(.+\.tiff)\/full\/full\/0\/default\.jpg$/i
+                );
+
+
+
+              if(
+                iiifMatch &&
+                ulx &&
+                uly &&
+                lrx &&
+                lry
+              ){
+
+
+                const baseTiff =
+                  iiifMatch[1];
+
+
+                const width =
+                  parseInt(lrx) -
+                  parseInt(ulx);
+
+
+                const height =
+                  parseInt(lry) -
+                  parseInt(uly);
+
+
+                const region =
+                  `${ulx},${uly},${width},${height}`;
+
+
+                finalUrl =
+                  `${baseTiff}/${region}/full/0/default.jpg`;
+
+              }
+
+
+
+              const img =
+                document
+                  .createElement(
+                    'img'
+                  );
+
+
+              img.src =
+                finalUrl;
+
+
+              img.onerror =
+                () => {
+
+                  viewer.innerHTML =
+                    '<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';
+
+                };
+
+
+              viewer.innerHTML =
+                '';
+
+
+              viewer.appendChild(
+                img
+              );
+
+
+              return;
+
+            }
+
+          }
+
+        }
+
+      }
+
+
+
+      /* ----------------------------------
+         graphic
+      ---------------------------------- */
+
+      if(
+        element
+          .tagName
+          .toLowerCase()
+        ===
+        'graphic'
+      ){
+
+
+        const url =
+          element.getAttribute(
+            'url'
+          )
+          ||
+          element.getAttribute(
+            'href'
+          );
+
+
+
+        if(url){
+
+
+          const img =
+            document
+              .createElement(
+                'img'
+              );
+
+
+          img.src =
+            url;
+
+
+          viewer.innerHTML =
+            '';
+
+
+          viewer.appendChild(
+            img
+          );
+
+
+          return;
+
+        }
+
+      }
+
+    }
+
+
+
+    /* ------------------------------------
+       baseURL
+    ------------------------------------ */
+
+    if(baseUrl){
+
+
+      const attempt =
+        baseUrl.replace(
+          /\/$/,
+          ''
+        )
+        +
+        '/'
+        +
+        id
+        +
+        '.jpg';
+
+
+
+      const img =
+        document
+          .createElement(
+            'img'
+          );
+
+
+      img.src =
+        attempt;
+
+
+      viewer.innerHTML =
+        '';
+
+
+      viewer.appendChild(
+        img
+      );
+
+
+      return;
+
+    }
+
+  }
+
+
+
+  viewer.innerHTML =
+    '<p style="color:#ef4444">画像が見つかりませんでした。</p>';
+
 }
 
-function drawUtteranceNetwork(nodes,links){
-  if(nodes.length===0)return;
-  
-  const graphEl=document.getElementById('graph');
-  const width=graphEl.clientWidth;
-  const height=window.innerWidth<=768?400:500;
-  const svg=d3.select('#graph').html('').append('svg').attr('width',width).attr('height',height)
-    .call(d3.zoom().scaleExtent([0.1,4]).on('zoom',(e)=>{container.attr('transform',e.transform)}));
-  
-  const container=svg.append('g');
-  
-  const maxUtterance=d3.max(nodes,d=>d.utteranceCount)||1;
-  const isMobile=window.innerWidth<=768;
-  const radiusScale=d3.scaleSqrt().domain([0,maxUtterance]).range(isMobile?[8,25]:[12,35]);
-  
-  const maxCount=d3.max(links,d=>d.count)||1;
-  const strokeScale=d3.scaleLinear().domain([1,maxCount]).range(isMobile?[1,4]:[1.5,6]);
-  
-  const sim=d3.forceSimulation(nodes)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d.bidirectional?(isMobile?100:140):(isMobile?90:120)))
-    .force('charge',d3.forceManyBody().strength(isMobile?-300:-500))
-    .force('center',d3.forceCenter(width/2,height/2))
-    .force('collision',d3.forceCollide().radius(d=>radiusScale(d.utteranceCount)+10));
-  
-  const defs=svg.append('defs');
-  defs.append('marker').attr('id','arrow-single').attr('viewBox','0 -5 10 10')
-    .attr('refX',10).attr('refY',0).attr('markerWidth',7).attr('markerHeight',7)
-    .attr('orient','auto').append('path').attr('d','M0,-5L10,0L0,5').attr('fill','#3b82f6');
-  defs.append('marker').attr('id','arrow-bi-1').attr('viewBox','0 -5 10 10')
-    .attr('refX',10).attr('refY',0).attr('markerWidth',7).attr('markerHeight',7)
-    .attr('orient','auto').append('path').attr('d','M0,-5L10,0L0,5').attr('fill','#10b981');
-  defs.append('marker').attr('id','arrow-bi-2').attr('viewBox','0 -5 10 10')
-    .attr('refX',10).attr('refY',0).attr('markerWidth',7).attr('markerHeight',7)
-    .attr('orient','auto').append('path').attr('d','M0,-5L10,0L0,5').attr('fill','#f59e0b');
-  
-  const link=container.selectAll('path.link').data(links).enter().append('path')
-    .attr('class','link')
-    .attr('stroke',d=>d.bidirectional?'#10b981':'#3b82f6')
-    .attr('stroke-width',d=>strokeScale(d.count))
-    .attr('fill','none')
-    .attr('marker-end',d=>d.bidirectional?'url(#arrow-bi-1)':'url(#arrow-single)')
-    .attr('opacity',0.7)
-    .on('mouseover',function(e,d){
-      d3.select(this).attr('opacity',1).attr('stroke-width',strokeScale(d.count)+2);
-      const midX=(d.source.x+d.target.x)/2;
-      const midY=(d.source.y+d.target.y)/2;
-      const tooltip=container.append('g').attr('class','edge-tooltip');
-      tooltip.append('rect')
-        .attr('x',midX-35)
-        .attr('y',midY-20)
-        .attr('width',70)
-        .attr('height',25)
-        .attr('fill','white')
-        .attr('stroke','#3b82f6')
-        .attr('stroke-width',1.5)
-        .attr('rx',4);
-      tooltip.append('text')
-        .attr('x',midX)
-        .attr('y',midY-5)
-        .attr('text-anchor','middle')
-        .attr('font-size',11)
-        .attr('font-weight','bold')
-        .attr('fill','#1e293b')
-        .text(`発話: ${d.count}回`);
-    })
-    .on('mouseout',function(e,d){
-      d3.select(this).attr('opacity',0.7).attr('stroke-width',strokeScale(d.count));
-      container.selectAll('.edge-tooltip').remove();
-    });
-  
-  const reverseLinks=links.filter(d=>d.bidirectional).map(d=>({
-    source:d.target,
-    target:d.source,
-    count:d.reverseCount,
-    isReverse:true
-  }));
-  
-  const reverseLink=container.selectAll('path.reverse-link').data(reverseLinks).enter().append('path')
-    .attr('class','reverse-link')
-    .attr('stroke','#f59e0b')
-    .attr('stroke-width',d=>strokeScale(d.count))
-    .attr('fill','none')
-    .attr('marker-end','url(#arrow-bi-2)')
-    .attr('opacity',0.7)
-    .on('mouseover',function(e,d){
-      d3.select(this).attr('opacity',1).attr('stroke-width',strokeScale(d.count)+2);
-      const midX=(d.source.x+d.target.x)/2;
-      const midY=(d.source.y+d.target.y)/2;
-      const tooltip=container.append('g').attr('class','edge-tooltip');
-      tooltip.append('rect')
-        .attr('x',midX-35)
-        .attr('y',midY+5)
-        .attr('width',70)
-        .attr('height',25)
-        .attr('fill','white')
-        .attr('stroke','#f59e0b')
-        .attr('stroke-width',1.5)
-        .attr('rx',4);
-      tooltip.append('text')
-        .attr('x',midX)
-        .attr('y',midY+20)
-        .attr('text-anchor','middle')
-        .attr('font-size',11)
-        .attr('font-weight','bold')
-        .attr('fill','#1e293b')
-        .text(`発話: ${d.count}回`);
-    })
-    .on('mouseout',function(e,d){
-      d3.select(this).attr('opacity',0.7).attr('stroke-width',strokeScale(d.count));
-      container.selectAll('.edge-tooltip').remove();
-    });
-  
-  const node=container.selectAll('circle').data(nodes).enter().append('circle')
-    .attr('r',d=>radiusScale(d.utteranceCount))
-    .attr('fill','#60a5fa')
-    .attr('stroke','#1e40af')
-    .attr('stroke-width',2)
-    .call(d3.drag()
-      .on('start',(e)=>{if(!e.active)sim.alphaTarget(0.3).restart();e.subject.fx=e.subject.x;e.subject.fy=e.subject.y;})
-      .on('drag',(e)=>{e.subject.fx=e.x;e.subject.fy=e.y;})
-      .on('end',(e)=>{if(!e.active)sim.alphaTarget(0);e.subject.fx=null;e.subject.fy=null;}))
-    .on('mouseover',function(e,d){
-      d3.select(this).attr('fill','#3b82f6').attr('stroke-width',3);
-      const isMobile=window.innerWidth<=768;
-      const tooltip=container.append('g').attr('class','node-tooltip');
-      const boxWidth=isMobile?100:120;
-      const boxHeight=isMobile?40:45;
-      const boxX=d.x-boxWidth/2;
-      const boxY=d.y-radiusScale(d.utteranceCount)-(isMobile?50:55);
-      const tooltipBg=tooltip.append('rect')
-        .attr('x',boxX)
-        .attr('y',boxY)
-        .attr('width',boxWidth)
-        .attr('height',boxHeight)
-        .attr('fill','white')
-        .attr('stroke','#1e293b')
-        .attr('stroke-width',1.5)
-        .attr('rx',6);
-      tooltip.append('text')
-        .attr('x',d.x)
-        .attr('y',boxY+15)
-        .attr('text-anchor','middle')
-        .attr('font-size',isMobile?10:11)
-        .attr('font-weight','bold')
-        .attr('fill','#1e293b')
-        .text(d.id);
-      tooltip.append('text')
-        .attr('x',d.x)
-        .attr('y',boxY+27)
-        .attr('text-anchor','middle')
-        .attr('font-size',isMobile?9:10)
-        .attr('fill','#059669')
-        .text(`送信: ${d.utteranceCount}回`);
-      if(!isMobile){
-        tooltip.append('text')
-          .attr('x',d.x)
-          .attr('y',boxY+39)
-          .attr('text-anchor','middle')
-          .attr('font-size',10)
-          .attr('fill','#dc2626')
-          .text(`受信: ${d.receivedCount}回`);
-      }
-    })
-    .on('mouseout',function(e,d){
-      d3.select(this).attr('fill','#60a5fa').attr('stroke-width',2);
-      container.selectAll('.node-tooltip').remove();
-    });
-  
-  const label=container.selectAll('text.label').data(nodes).enter().append('text')
-    .attr('class','label')
-    .text(d=>d.id)
-    .attr('font-size',d=>Math.max(isMobile?9:11,radiusScale(d.utteranceCount)*0.5))
-    .attr('font-weight','bold')
-    .attr('fill','#1e293b')
-    .attr('text-anchor','middle')
-    .attr('pointer-events','none');
-  
-  function drawEdge(d,isReverse){
-    const dx=d.target.x-d.source.x;
-    const dy=d.target.y-d.source.y;
-    const dist=Math.sqrt(dx*dx+dy*dy);
-    
-    if(dist===0)return `M${d.source.x},${d.source.y}L${d.source.x},${d.source.y}`;
-    
-    const targetRadius=radiusScale(d.target.utteranceCount);
-    const sourceRadius=radiusScale(d.source.utteranceCount);
-    const markerOffset=10;
-    
-    const isBidirectional=!isReverse&&links.find(l=>l.source.id===d.source.id&&l.target.id===d.target.id&&l.bidirectional);
-    
-    if(isBidirectional||isReverse){
-      const midX=(d.source.x+d.target.x)/2;
-      const midY=(d.source.y+d.target.y)/2;
-      const perpX=-dy/dist;
-      const perpY=dx/dist;
-      const curveOffset=isReverse?-25:25;
-      const controlX=midX+perpX*curveOffset;
-      const controlY=midY+perpY*curveOffset;
-      
-      const sourceRatio=sourceRadius/dist;
-      const startX=d.source.x+dx*sourceRatio;
-      const startY=d.source.y+dy*sourceRatio;
-      
-      const endDx=d.target.x-controlX;
-      const endDy=d.target.y-controlY;
-      const endDist=Math.sqrt(endDx*endDx+endDy*endDy);
-      const endRatio=(endDist-targetRadius-markerOffset)/endDist;
-      const endX=controlX+endDx*endRatio;
-      const endY=controlY+endDy*endRatio;
-      
-      return `M${startX},${startY}Q${controlX},${controlY},${endX},${endY}`;
-    }else{
-      const ratio=(dist-targetRadius-markerOffset)/dist;
-      const endX=d.source.x+dx*ratio;
-      const endY=d.source.y+dy*ratio;
-      
-      const sourceRatio=sourceRadius/dist;
-      const startX=d.source.x+dx*sourceRatio;
-      const startY=d.source.y+dy*sourceRatio;
-      
-      return `M${startX},${startY}L${endX},${endY}`;
-    }
+
+
+/* ========================================
+   発話ネットワーク描画
+======================================== */
+
+function drawUtteranceNetwork(
+  nodes,
+  links
+){
+
+
+  if(
+    nodes.length === 0
+  ){
+
+    return;
+
   }
-  
-  sim.on('tick',()=>{
-    link.attr('d',d=>drawEdge(d,false));
-    reverseLink.attr('d',d=>drawEdge(d,true));
-    node.attr('cx',d=>d.x).attr('cy',d=>d.y);
-    label.attr('x',d=>d.x).attr('y',d=>d.y+5);
-  });
+
+
+
+  const graphEl =
+    document
+      .getElementById(
+        'graph'
+      );
+
+
+
+  const width =
+    graphEl.clientWidth;
+
+
+
+  const height =
+    window.innerWidth <= 768
+      ? 400
+      : 500;
+
+
+
+  const isMobile =
+    window.innerWidth <= 768;
+
+
+
+  /* ====================================
+     SVG
+  ==================================== */
+
+  const svg =
+    d3
+      .select(
+        '#graph'
+      )
+      .html(
+        ''
+      )
+      .append(
+        'svg'
+      )
+      .attr(
+        'width',
+        width
+      )
+      .attr(
+        'height',
+        height
+      );
+
+
+
+  const container =
+    svg.append(
+      'g'
+    );
+
+
+
+  svg.call(
+
+    d3
+      .zoom()
+      .scaleExtent(
+        [0.1,4]
+      )
+      .on(
+        'zoom',
+        e => {
+
+          container.attr(
+            'transform',
+            e.transform
+          );
+
+        }
+      )
+
+  );
+
+
+
+  /* ====================================
+     ノードサイズ
+  ==================================== */
+
+  const maxUtterance =
+    d3.max(
+      nodes,
+      d => d.utteranceCount
+    )
+    ||
+    1;
+
+
+
+  const radiusScale =
+    d3
+      .scaleSqrt()
+      .domain(
+        [
+          0,
+          maxUtterance
+        ]
+      )
+      .range(
+        isMobile
+          ? [8,25]
+          : [12,35]
+      );
+
+
+
+  /* ====================================
+     線の太さ
+     回数が多いほど太くする
+  ==================================== */
+
+  const maxCount =
+    d3.max(
+      links,
+      d => d.count
+    )
+    ||
+    1;
+
+
+
+  const strokeScale =
+
+    maxCount > 1
+
+      ?
+
+      d3
+        .scaleSqrt()
+        .domain(
+          [
+            1,
+            maxCount
+          ]
+        )
+        .range(
+          isMobile
+            ? [1.5,7]
+            : [2,10]
+        )
+
+      :
+
+      () =>
+        isMobile
+          ? 2
+          : 2.5;
+
+
+
+  /* ====================================
+     Force Simulation
+  ==================================== */
+
+  const sim =
+    d3
+      .forceSimulation(
+        nodes
+      )
+
+
+      .force(
+
+        'link',
+
+        d3
+          .forceLink(
+            links
+          )
+          .id(
+            d => d.id
+          )
+          .distance(
+            d => {
+
+
+              const sourceId =
+                typeof d.source === 'object'
+                  ? d.source.id
+                  : d.source;
+
+
+              const targetId =
+                typeof d.target === 'object'
+                  ? d.target.id
+                  : d.target;
+
+
+
+              if(
+                sourceId === targetId
+              ){
+
+                return isMobile
+                  ? 70
+                  : 90;
+
+              }
+
+
+
+              return d.bidirectional
+
+                ? (
+                    isMobile
+                      ? 110
+                      : 145
+                  )
+
+                : (
+                    isMobile
+                      ? 95
+                      : 125
+                  );
+
+            }
+          )
+
+      )
+
+
+      .force(
+
+        'charge',
+
+        d3
+          .forceManyBody()
+          .strength(
+            isMobile
+              ? -300
+              : -500
+          )
+
+      )
+
+
+      .force(
+
+        'center',
+
+        d3
+          .forceCenter(
+            width / 2,
+            height / 2
+          )
+
+      )
+
+
+      .force(
+
+        'collision',
+
+        d3
+          .forceCollide()
+          .radius(
+            d =>
+              radiusScale(
+                d.utteranceCount
+              )
+              +
+              14
+          )
+
+      );
+
+
+
+  /* ====================================
+     矢印マーカー
+  ==================================== */
+
+  const defs =
+    svg.append(
+      'defs'
+    );
+
+
+
+  defs
+    .append(
+      'marker'
+    )
+    .attr(
+      'id',
+      'arrow'
+    )
+    .attr(
+      'viewBox',
+      '0 -5 10 10'
+    )
+    .attr(
+      'refX',
+      9
+    )
+    .attr(
+      'refY',
+      0
+    )
+    .attr(
+      'markerWidth',
+      6
+    )
+    .attr(
+      'markerHeight',
+      6
+    )
+    .attr(
+      'orient',
+      'auto'
+    )
+    .attr(
+      'markerUnits',
+      'strokeWidth'
+    )
+    .append(
+      'path'
+    )
+    .attr(
+      'd',
+      'M0,-5L10,0L0,5'
+    )
+    .attr(
+      'fill',
+      '#3b82f6'
+    );
+
+
+
+  /* ====================================
+     リンク描画
+  ==================================== */
+
+  const link =
+    container
+      .selectAll(
+        'path.link'
+      )
+      .data(
+        links
+      )
+      .enter()
+      .append(
+        'path'
+      )
+      .attr(
+        'class',
+        'link'
+      )
+      .attr(
+        'stroke',
+        '#3b82f6'
+      )
+      .attr(
+        'stroke-width',
+        d =>
+          strokeScale(
+            d.count
+          )
+      )
+      .attr(
+        'fill',
+        'none'
+      )
+      .attr(
+        'marker-end',
+        'url(#arrow)'
+      )
+      .attr(
+        'opacity',
+        0.72
+      )
+
+
+      .on(
+        'mouseover',
+        function(e,d){
+
+
+          d3
+            .select(this)
+            .attr(
+              'opacity',
+              1
+            )
+            .attr(
+              'stroke-width',
+              strokeScale(
+                d.count
+              )
+              +
+              2
+            );
+
+
+
+          let tooltipX;
+
+          let tooltipY;
+
+
+
+          if(
+            d.source.id ===
+            d.target.id
+          ){
+
+
+            tooltipX =
+              d.source.x;
+
+
+            tooltipY =
+              d.source.y
+              -
+              radiusScale(
+                d.source
+                  .utteranceCount
+              )
+              -
+              58;
+
+
+          }
+          else{
+
+
+            tooltipX =
+              (
+                d.source.x +
+                d.target.x
+              )
+              /
+              2;
+
+
+            tooltipY =
+              (
+                d.source.y +
+                d.target.y
+              )
+              /
+              2;
+
+          }
+
+
+
+          const tooltip =
+            container
+              .append(
+                'g'
+              )
+              .attr(
+                'class',
+                'edge-tooltip'
+              );
+
+
+
+          tooltip
+            .append(
+              'rect'
+            )
+            .attr(
+              'x',
+              tooltipX - 42
+            )
+            .attr(
+              'y',
+              tooltipY - 20
+            )
+            .attr(
+              'width',
+              84
+            )
+            .attr(
+              'height',
+              26
+            )
+            .attr(
+              'fill',
+              'white'
+            )
+            .attr(
+              'stroke',
+              '#3b82f6'
+            )
+            .attr(
+              'stroke-width',
+              1.5
+            )
+            .attr(
+              'rx',
+              4
+            );
+
+
+
+          tooltip
+            .append(
+              'text'
+            )
+            .attr(
+              'x',
+              tooltipX
+            )
+            .attr(
+              'y',
+              tooltipY - 3
+            )
+            .attr(
+              'text-anchor',
+              'middle'
+            )
+            .attr(
+              'font-size',
+              11
+            )
+            .attr(
+              'font-weight',
+              'bold'
+            )
+            .attr(
+              'fill',
+              '#1e293b'
+            )
+            .text(
+              `回数: ${d.count}回`
+            );
+
+        }
+      )
+
+
+      .on(
+        'mouseout',
+        function(e,d){
+
+
+          d3
+            .select(this)
+            .attr(
+              'opacity',
+              0.72
+            )
+            .attr(
+              'stroke-width',
+              strokeScale(
+                d.count
+              )
+            );
+
+
+          container
+            .selectAll(
+              '.edge-tooltip'
+            )
+            .remove();
+
+        }
+      );
+
+
+
+  /* ====================================
+     ノード描画
+  ==================================== */
+
+  const node =
+    container
+      .selectAll(
+        'circle.node'
+      )
+      .data(
+        nodes
+      )
+      .enter()
+      .append(
+        'circle'
+      )
+      .attr(
+        'class',
+        'node'
+      )
+      .attr(
+        'r',
+        d =>
+          radiusScale(
+            d.utteranceCount
+          )
+      )
+      .attr(
+        'fill',
+        '#60a5fa'
+      )
+      .attr(
+        'stroke',
+        '#1e40af'
+      )
+      .attr(
+        'stroke-width',
+        2
+      )
+
+
+
+      .call(
+
+        d3
+          .drag()
+
+
+          .on(
+            'start',
+            e => {
+
+
+              if(
+                !e.active
+              ){
+
+                sim
+                  .alphaTarget(
+                    0.3
+                  )
+                  .restart();
+
+              }
+
+
+              e.subject.fx =
+                e.subject.x;
+
+
+              e.subject.fy =
+                e.subject.y;
+
+            }
+          )
+
+
+          .on(
+            'drag',
+            e => {
+
+
+              e.subject.fx =
+                e.x;
+
+
+              e.subject.fy =
+                e.y;
+
+            }
+          )
+
+
+          .on(
+            'end',
+            e => {
+
+
+              if(
+                !e.active
+              ){
+
+                sim.alphaTarget(
+                  0
+                );
+
+              }
+
+
+              e.subject.fx =
+                null;
+
+
+              e.subject.fy =
+                null;
+
+            }
+          )
+
+      )
+
+
+
+      .on(
+        'mouseover',
+        function(e,d){
+
+
+          d3
+            .select(this)
+            .attr(
+              'fill',
+              '#3b82f6'
+            )
+            .attr(
+              'stroke-width',
+              3
+            );
+
+
+
+          const boxWidth =
+            isMobile
+              ? 105
+              : 125;
+
+
+
+          const boxHeight =
+            isMobile
+              ? 42
+              : 50;
+
+
+
+          const boxX =
+            d.x -
+            boxWidth / 2;
+
+
+
+          const boxY =
+            d.y
+            -
+            radiusScale(
+              d.utteranceCount
+            )
+            -
+            (
+              isMobile
+                ? 54
+                : 62
+            );
+
+
+
+          const tooltip =
+            container
+              .append(
+                'g'
+              )
+              .attr(
+                'class',
+                'node-tooltip'
+              );
+
+
+
+          tooltip
+            .append(
+              'rect'
+            )
+            .attr(
+              'x',
+              boxX
+            )
+            .attr(
+              'y',
+              boxY
+            )
+            .attr(
+              'width',
+              boxWidth
+            )
+            .attr(
+              'height',
+              boxHeight
+            )
+            .attr(
+              'fill',
+              'white'
+            )
+            .attr(
+              'stroke',
+              '#1e293b'
+            )
+            .attr(
+              'stroke-width',
+              1.5
+            )
+            .attr(
+              'rx',
+              6
+            );
+
+
+
+          tooltip
+            .append(
+              'text'
+            )
+            .attr(
+              'x',
+              d.x
+            )
+            .attr(
+              'y',
+              boxY + 15
+            )
+            .attr(
+              'text-anchor',
+              'middle'
+            )
+            .attr(
+              'font-size',
+              isMobile
+                ? 10
+                : 11
+            )
+            .attr(
+              'font-weight',
+              'bold'
+            )
+            .attr(
+              'fill',
+              '#1e293b'
+            )
+            .text(
+              d.id
+            );
+
+
+
+          tooltip
+            .append(
+              'text'
+            )
+            .attr(
+              'x',
+              d.x
+            )
+            .attr(
+              'y',
+              boxY + 29
+            )
+            .attr(
+              'text-anchor',
+              'middle'
+            )
+            .attr(
+              'font-size',
+              isMobile
+                ? 9
+                : 10
+            )
+            .attr(
+              'fill',
+              '#059669'
+            )
+            .text(
+              `送信: ${d.utteranceCount}回`
+            );
+
+
+
+          if(
+            !isMobile
+          ){
+
+
+            tooltip
+              .append(
+                'text'
+              )
+              .attr(
+                'x',
+                d.x
+              )
+              .attr(
+                'y',
+                boxY + 42
+              )
+              .attr(
+                'text-anchor',
+                'middle'
+              )
+              .attr(
+                'font-size',
+                10
+              )
+              .attr(
+                'fill',
+                '#dc2626'
+              )
+              .text(
+                `受信: ${d.receivedCount}回`
+              );
+
+          }
+
+        }
+      )
+
+
+
+      .on(
+        'mouseout',
+        function(){
+
+
+          d3
+            .select(this)
+            .attr(
+              'fill',
+              '#60a5fa'
+            )
+            .attr(
+              'stroke-width',
+              2
+            );
+
+
+          container
+            .selectAll(
+              '.node-tooltip'
+            )
+            .remove();
+
+        }
+      );
+
+
+
+  /* ====================================
+     人物名ラベル
+  ==================================== */
+
+  const label =
+    container
+      .selectAll(
+        'text.label'
+      )
+      .data(
+        nodes
+      )
+      .enter()
+      .append(
+        'text'
+      )
+      .attr(
+        'class',
+        'label'
+      )
+      .text(
+        d => d.id
+      )
+      .attr(
+        'font-size',
+        d =>
+          Math.max(
+            isMobile
+              ? 9
+              : 11,
+            radiusScale(
+              d.utteranceCount
+            )
+            *
+            0.5
+          )
+      )
+      .attr(
+        'font-weight',
+        'bold'
+      )
+      .attr(
+        'fill',
+        '#1e293b'
+      )
+      .attr(
+        'text-anchor',
+        'middle'
+      )
+      .attr(
+        'pointer-events',
+        'none'
+      );
+
+
+
+  /* ====================================
+     リンク形状
+  ==================================== */
+
+  function drawEdge(d){
+
+
+    const source =
+      d.source;
+
+
+    const target =
+      d.target;
+
+
+
+    /* ==================================
+       同一人物への発話
+       自己回帰ループ
+    ================================== */
+
+    if(
+      source.id ===
+      target.id
+    ){
+
+
+      const x =
+        source.x;
+
+
+      const y =
+        source.y;
+
+
+
+      const nodeRadius =
+        radiusScale(
+          source.utteranceCount
+        );
+
+
+
+      /*
+       * ループをノードの上側に描画
+       */
+      const loopWidth =
+        nodeRadius + 32;
+
+
+
+      const loopHeight =
+        nodeRadius + 45;
+
+
+
+      /*
+       * ノード右上から開始
+       */
+      const startX =
+        x +
+        nodeRadius *
+        0.68;
+
+
+
+      const startY =
+        y -
+        nodeRadius *
+        0.72;
+
+
+
+      /*
+       * ノード左上へ戻る
+       */
+      const endX =
+        x -
+        nodeRadius *
+        0.68;
+
+
+
+      const endY =
+        y -
+        nodeRadius *
+        0.72;
+
+
+
+      return `
+        M
+        ${startX},
+        ${startY}
+
+        C
+        ${x + loopWidth},
+        ${y - loopHeight}
+
+        ${x - loopWidth},
+        ${y - loopHeight}
+
+        ${endX},
+        ${endY}
+      `;
+
+    }
+
+
+
+    /* ==================================
+       通常リンク
+    ================================== */
+
+    const dx =
+      target.x -
+      source.x;
+
+
+    const dy =
+      target.y -
+      source.y;
+
+
+
+    const dist =
+      Math.sqrt(
+        dx * dx +
+        dy * dy
+      );
+
+
+
+    if(
+      dist === 0
+    ){
+
+      return '';
+
+    }
+
+
+
+    const sourceRadius =
+      radiusScale(
+        source.utteranceCount
+      );
+
+
+
+    const targetRadius =
+      radiusScale(
+        target.utteranceCount
+      );
+
+
+
+    /*
+     * 発話元ノードの外周から開始
+     */
+    const startRatio =
+      sourceRadius /
+      dist;
+
+
+
+    const startX =
+      source.x +
+      dx *
+      startRatio;
+
+
+
+    const startY =
+      source.y +
+      dy *
+      startRatio;
+
+
+
+    /*
+     * 発話先ノードの少し手前で終了
+     * 矢印がノードに埋もれないようにする
+     */
+    const markerOffset =
+      8;
+
+
+
+    const endRatio =
+      (
+        dist
+        -
+        targetRadius
+        -
+        markerOffset
+      )
+      /
+      dist;
+
+
+
+    const endX =
+      source.x +
+      dx *
+      endRatio;
+
+
+
+    const endY =
+      source.y +
+      dy *
+      endRatio;
+
+
+
+    /* ==================================
+       双方向
+       曲線として分離
+    ================================== */
+
+    if(
+      d.bidirectional
+    ){
+
+
+      const midX =
+        (
+          source.x +
+          target.x
+        )
+        /
+        2;
+
+
+
+      const midY =
+        (
+          source.y +
+          target.y
+        )
+        /
+        2;
+
+
+
+      const perpX =
+        -dy /
+        dist;
+
+
+
+      const perpY =
+        dx /
+        dist;
+
+
+
+      /*
+       * A→B と B→A では
+       * dx,dy が反転するため、
+       * 同じ正の値を使うことで
+       * 自然に反対方向へ曲がる
+       */
+      const curveOffset =
+        isMobile
+          ? 22
+          : 30;
+
+
+
+      const controlX =
+        midX +
+        perpX *
+        curveOffset;
+
+
+
+      const controlY =
+        midY +
+        perpY *
+        curveOffset;
+
+
+
+      return `
+        M
+        ${startX},
+        ${startY}
+
+        Q
+        ${controlX},
+        ${controlY}
+
+        ${endX},
+        ${endY}
+      `;
+
+    }
+
+
+
+    /* ==================================
+       単方向
+    ================================== */
+
+    return `
+      M
+      ${startX},
+      ${startY}
+
+      L
+      ${endX},
+      ${endY}
+    `;
+
+  }
+
+
+
+  /* ====================================
+     Tick更新
+  ==================================== */
+
+  sim.on(
+    'tick',
+    () => {
+
+
+      link.attr(
+        'd',
+        d =>
+          drawEdge(d)
+      );
+
+
+
+      node
+        .attr(
+          'cx',
+          d => d.x
+        )
+        .attr(
+          'cy',
+          d => d.y
+        );
+
+
+
+      label
+        .attr(
+          'x',
+          d => d.x
+        )
+        .attr(
+          'y',
+          d => d.y + 5
+        );
+
+
+    }
+  );
+
+
 }
-  </script>
+
+
+</script>
+
+
 </body>
 </html>
