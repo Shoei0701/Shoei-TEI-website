@@ -1,14 +1,26 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
+
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>源氏かるたビューワー</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  />
+
+  <title>
+    源氏かるたビューワー
+  </title>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
+
   <style>
+
     body{
+
       font-family:
         system-ui,
         -apple-system,
@@ -19,282 +31,530 @@
         sans-serif;
 
       background:#f6f8fb;
+
       color:#0b1220;
+
       margin:0;
+
     }
+
 
     header{
-      background:linear-gradient(90deg,#f8fafc,#eef2ff);
+
+      background:
+        linear-gradient(
+          90deg,
+          #f8fafc,
+          #eef2ff
+        );
+
       padding:18px 20px;
-      border-bottom:1px solid #e2e8f0;
+
+      border-bottom:
+        1px solid #e2e8f0;
+
     }
+
 
     .wrap{
+
       max-width:1100px;
+
       margin:22px auto;
+
       padding:18px;
+
       background:white;
+
       border-radius:12px;
-      box-shadow:0 6px 24px rgba(15,23,42,0.06);
+
+      box-shadow:
+        0 6px 24px
+        rgba(15,23,42,0.06);
+
     }
+
 
     h1{
+
       margin:0 0 8px;
+
       font-size:18px;
+
     }
 
+
     .grid{
+
       display:grid;
-      grid-template-columns:1fr 420px;
+
+      grid-template-columns:
+        1fr 420px;
+
       gap:16px;
+
     }
+
 
     @media(max-width:768px){
 
       .wrap{
+
         margin:12px;
+
         padding:12px;
+
       }
+
 
       h1{
+
         font-size:16px;
+
       }
+
 
       .grid{
+
         grid-template-columns:1fr;
+
         gap:12px;
+
       }
+
 
       .image-area{
+
         position:static;
+
         max-height:none;
+
       }
+
 
       #graph{
+
         height:400px;
+
       }
+
 
       .controls{
+
         flex-direction:column;
+
         align-items:stretch;
+
       }
+
 
       .controls label{
+
         width:100%;
+
       }
+
 
       .controls input[type="text"]{
+
         width:100%!important;
+
       }
+
     }
+
+
 
     .panel{
+
       background:#fbfdff;
+
       padding:12px;
+
       border-radius:10px;
-      border:1px solid #eef2ff;
+
+      border:
+        1px solid #eef2ff;
+
       min-height:240px;
+
     }
+
 
     .image-area{
+
       position:sticky;
+
       top:16px;
+
       align-self:start;
-      max-height:calc(100vh - 32px);
+
+      max-height:
+        calc(100vh - 32px);
+
       overflow-y:auto;
+
     }
+
 
     .tei-list{
+
       list-style:none;
+
       padding:0;
+
       margin:0;
+
       display:flex;
+
       flex-direction:column;
+
       gap:8px;
+
     }
+
 
     .tei-header{
+
       background:#f0f9ff;
+
       padding:12px;
+
       border-radius:8px;
-      border:1px solid #bae6fd;
+
+      border:
+        1px solid #bae6fd;
+
       margin-bottom:16px;
+
     }
+
 
     .tei-header h4{
+
       margin:0 0 8px;
+
       font-size:14px;
+
       color:#0c4a6e;
+
     }
+
 
     .tei-header p{
+
       margin:4px 0;
+
       font-size:13px;
+
       color:#075985;
+
     }
+
 
     .section-title{
+
       background:#fef3c7;
+
       padding:12px;
+
       border-radius:8px;
-      border:1px solid #fde68a;
+
+      border:
+        1px solid #fde68a;
+
       margin-bottom:12px;
+
       display:flex;
+
       align-items:center;
-      justify-content:space-between;
+
+      justify-content:
+        space-between;
+
     }
+
 
     .section-title h4{
+
       margin:0;
+
       color:#78350f;
+
       font-size:16px;
+
     }
+
 
     .tei-item{
+
       padding:10px;
+
       border-radius:8px;
+
       background:white;
-      border:1px solid #f1f5f9;
+
+      border:
+        1px solid #f1f5f9;
+
     }
+
 
     .meta{
+
       font-size:13px;
+
       color:#64748b;
+
       margin-bottom:8px;
+
     }
+
 
     a.person{
+
       color:#2563eb;
+
       text-decoration:none;
+
       font-weight:600;
+
       cursor:pointer;
+
     }
+
 
     a.person:hover{
+
       text-decoration:underline;
+
     }
 
+
     .lines{
+
       font-family:
         "Hiragino Mincho ProN",
         "Yu Mincho",
         serif;
 
       background:#fff;
+
       padding:10px;
+
       border-radius:8px;
-      border:1px solid #f1f5f9;
+
+      border:
+        1px solid #f1f5f9;
+
     }
+
 
     .line{
+
       padding:6px 8px;
+
       border-radius:6px;
+
     }
+
 
     .image-area img{
+
       max-width:100%;
+
       border-radius:8px;
-      border:1px solid #e6eef6;
+
+      border:
+        1px solid #e6eef6;
+
       display:block;
+
       margin-bottom:12px;
+
     }
+
 
     #imageViewer{
+
       margin-bottom:16px;
+
       min-height:200px;
+
     }
+
 
     #graph{
+
       width:100%;
+
       height:500px;
-      border:1px solid #e5e7eb;
+
+      border:
+        1px solid #e5e7eb;
+
       border-radius:8px;
+
       margin-top:12px;
+
       background:white;
+
       overflow:hidden;
+
     }
+
 
     button{
+
       padding:4px 8px;
+
       font-size:12px;
+
       background:#3b82f6;
+
       color:white;
+
       border:none;
+
       border-radius:4px;
+
       cursor:pointer;
+
     }
+
 
     button:hover{
+
       background:#2563eb;
+
     }
+
 
     .controls{
+
       margin-bottom:16px;
+
       display:flex;
+
       gap:12px;
+
       align-items:center;
+
       flex-wrap:wrap;
+
     }
+
 
     .controls label{
+
       font-size:14px;
+
     }
+
 
     .controls input[type="text"]{
+
       padding:4px 8px;
-      border:1px solid #cbd5e1;
+
+      border:
+        1px solid #cbd5e1;
+
       border-radius:4px;
+
     }
+
 
     .waka-section{
+
       margin-bottom:24px;
+
     }
+
 
     .network-stats{
+
       background:#f0fdf4;
+
       padding:12px;
+
       border-radius:8px;
-      border:1px solid #bbf7d0;
+
+      border:
+        1px solid #bbf7d0;
+
       margin-bottom:12px;
+
     }
+
 
     .network-stats h4{
+
       margin:0 0 8px;
+
       font-size:14px;
+
       color:#166534;
+
     }
+
 
     .network-stats p{
+
       margin:4px 0;
+
       font-size:13px;
+
       color:#15803d;
+
     }
+
 
     .legend{
+
       margin-top:12px;
+
       padding:8px;
+
       background:#fefce8;
+
       border-radius:6px;
-      border:1px solid #fef08a;
+
+      border:
+        1px solid #fef08a;
+
     }
+
 
     .legend-item{
+
       display:flex;
+
       align-items:center;
+
       gap:8px;
+
       margin:4px 0;
+
       font-size:12px;
+
     }
+
   </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
   <div
     class="wrap"
-    style="background:transparent;padding:0"
+    style="
+      background:transparent;
+      padding:0;
+    "
   >
 
     <h1>
@@ -302,12 +562,22 @@
     </h1>
 
     <p>
+
       TEIの
-      <code>who</code>
+
+      <code>
+        who
+      </code>
+
       （発話者）→
-      <code>toWhom</code>
+
+      <code>
+        toWhom
+      </code>
+
       （受け手）の有向発話関係を
       ネットワークグラフで可視化します。
+
     </p>
 
   </div>
@@ -315,45 +585,59 @@
 </header>
 
 
+
 <main class="wrap">
+
 
   <div class="controls">
 
+
     <label>
+
       TEIファイル:
+
       <input
         id="file"
         type="file"
         accept=".xml,text/xml,application/xml"
       >
+
     </label>
 
+
     <label>
+
       画像ベースURL:
+
       <input
         id="baseUrl"
         type="text"
         placeholder="https://example.com/images/"
         style="width:250px"
       >
+
     </label>
+
 
     <button id="parseBtn">
       解析
     </button>
 
+
   </div>
+
 
 
   <div class="grid">
 
 
-    <!-- 左側 -->
     <section class="panel">
+
 
       <h3>
         テキスト
       </h3>
+
 
       <div id="outputArea">
 
@@ -363,23 +647,29 @@
 
       </div>
 
+
     </section>
 
 
-    <!-- 右側 -->
+
     <aside class="panel image-area">
+
 
       <h3>
         画像プレビュー
       </h3>
 
+
       <div id="imageViewer">
 
         <p style="color:#64748b">
+
           画像ボタンをクリックしてください。
+
         </p>
 
       </div>
+
 
 
       <div
@@ -388,9 +678,11 @@
         style="display:none"
       >
 
+
         <h4>
           発話ネットワーク統計
         </h4>
+
 
         <p id="nodeCount"></p>
 
@@ -398,12 +690,16 @@
 
         <p id="uniqueEdgeCount"></p>
 
+
       </div>
+
 
 
       <div class="legend">
 
+
         <div class="legend-item">
+
 
           <svg
             width="34"
@@ -419,6 +715,7 @@
               stroke-width="3"
             />
 
+
             <polygon
               points="33,5 27,1 27,9"
               fill="#3b82f6"
@@ -426,14 +723,18 @@
 
           </svg>
 
+
           <span>
             発話関係（太さ＝回数）
           </span>
 
+
         </div>
 
 
+
         <div class="legend-item">
+
 
           <svg
             width="34"
@@ -447,6 +748,7 @@
               fill="none"
             />
 
+
             <path
               d="M33,13 Q17,18 1,13"
               stroke="#3b82f6"
@@ -456,14 +758,18 @@
 
           </svg>
 
+
           <span>
             双方向（曲線で分離）
           </span>
 
+
         </div>
 
 
+
         <div class="legend-item">
+
 
           <svg
             width="34"
@@ -477,6 +783,7 @@
               fill="#60a5fa"
             />
 
+
             <path
               d="M21,12 C30,1 4,1 13,12"
               stroke="#3b82f6"
@@ -486,14 +793,18 @@
 
           </svg>
 
+
           <span>
             同一人物（自己回帰）
           </span>
 
+
         </div>
 
 
+
         <div class="legend-item">
+
 
           <svg
             width="20"
@@ -509,45 +820,68 @@
 
           </svg>
 
+
           <span>
             人物（サイズ＝発話数）
           </span>
 
+
         </div>
 
+
       </div>
+
 
 
       <h3>
         発話ネットワークグラフ
       </h3>
 
+
       <div id="graph"></div>
+
 
     </aside>
 
+
   </div>
 
+
 </main>
+
 
 
 <script>
 
 
+/* ========================================
+   HTMLエスケープ
+======================================== */
+
 function escapeHtml(s){
 
   return (s || '').replace(
+
     /[&<>"']/g,
+
     c => ({
+
       '&':'&amp;',
+
       '<':'&lt;',
+
       '>':'&gt;',
+
       '"':'&quot;',
+
       "'":'&#39;'
+
     }[c])
+
   );
 
 }
+
 
 
 let currentTEIDoc = null;
@@ -559,62 +893,108 @@ let currentTEIDoc = null;
 ======================================== */
 
 window.addEventListener(
+
   'DOMContentLoaded',
+
   () => {
+
 
     const defaultUrl =
       "Genji-karuta.xml";
 
+
     console.log(
-      "🔍 Loading default TEI file:",
+
+      "Loading default TEI file:",
+
       defaultUrl
+
     );
+
 
 
     fetch(defaultUrl)
 
+
       .then(res => {
+
 
         if(!res.ok){
 
+
           throw new Error(
+
             `XMLの取得に失敗しました (${res.status})`
+
           );
+
 
         }
 
+
         return res.text();
 
+
       })
+
 
       .then(xmlText => {
 
+
         console.log(
-          "✅ Genji-karuta.xml を取得しました"
+
+          "Genji-karuta.xml を取得しました"
+
         );
+
 
         parseTEI(xmlText);
 
+
       })
+
 
       .catch(err => {
 
+
         console.error(
-          "❌ 自動読み込みエラー:",
+
+          "自動読み込みエラー:",
+
           err
+
         );
 
+
         document
-          .getElementById('outputArea')
+
+          .getElementById(
+
+            'outputArea'
+
+          )
+
           .innerHTML =
-          `<p style='color:#ef4444'>
-            Genji-karuta.xml の自動読み込みに失敗しました。
+
+          `
+
+          <p style="color:#ef4444">
+
+            Genji-karuta.xml の
+            自動読み込みに失敗しました。
+
             (${escapeHtml(err.message)})
-          </p>`;
+
+          </p>
+
+          `;
+
 
       });
 
+
   }
+
 );
 
 
@@ -624,43 +1004,80 @@ window.addEventListener(
 ======================================== */
 
 document
-  .getElementById('parseBtn')
+
+  .getElementById(
+
+    'parseBtn'
+
+  )
+
   .addEventListener(
+
     'click',
+
     () => {
 
+
       const f =
+
         document
-          .getElementById('file')
+
+          .getElementById(
+
+            'file'
+
+          )
+
           .files[0];
+
+
 
       if(!f){
 
+
         alert(
+
           'ファイルを選択してください'
+
         );
 
+
         return;
+
 
       }
 
 
+
       const r =
+
         new FileReader();
 
 
+
       r.onload =
-        e => parseTEI(
-          e.target.result
-        );
+
+        e =>
+
+          parseTEI(
+
+            e.target.result
+
+          );
+
 
 
       r.readAsText(
+
         f,
+
         'utf-8'
+
       );
 
+
     }
+
   );
 
 
@@ -671,54 +1088,70 @@ document
 
 function parseTEI(xmlText){
 
+
   try{
 
 
     const parser =
+
       new DOMParser();
 
 
+
     const doc =
+
       parser.parseFromString(
+
         xmlText,
+
         'application/xml'
+
       );
 
 
-    currentTEIDoc =
-      doc;
+
+    currentTEIDoc = doc;
 
 
 
     const output =
+
       document
+
         .getElementById(
+
           'outputArea'
+
         );
+
 
 
     const imageViewer =
+
       document
+
         .getElementById(
+
           'imageViewer'
+
         );
 
 
-    output.innerHTML =
-      '';
+
+    output.innerHTML = '';
+
 
 
     imageViewer.innerHTML =
+
       '<p style="color:#64748b">画像ボタンをクリックしてください。</p>';
 
 
 
-    let rawLinks =
-      [];
+    let rawLinks = [];
 
 
-    let nodeMap =
-      new Map();
+    let nodeMap = new Map();
 
 
 
@@ -727,146 +1160,242 @@ function parseTEI(xmlText){
     ==================================== */
 
     const teiHeader =
+
       doc.querySelector(
+
         'teiHeader'
+
       );
+
 
 
     if(teiHeader){
 
 
       const headerDiv =
+
         document.createElement(
+
           'div'
+
         );
+
 
 
       headerDiv.className =
+
         'tei-header';
 
 
+
       const title =
+
         teiHeader.querySelector(
+
           'title'
+
         );
+
 
 
       const author =
+
         teiHeader.querySelector(
+
           'author'
+
         );
+
 
 
       const date =
+
         teiHeader.querySelector(
+
           'date'
+
         );
+
 
 
       const publisher =
+
         teiHeader.querySelector(
+
           'publisher'
+
         );
 
 
+
       let headerHTML =
+
         '<h4>文書情報</h4>';
+
 
 
       if(title){
 
+
         headerHTML +=
-          `<p>
-            <strong>タイトル:</strong>
+
+          `
+
+          <p>
+
+            <strong>
+              タイトル:
+            </strong>
+
             ${escapeHtml(
               title.textContent.trim()
             )}
-          </p>`;
+
+          </p>
+
+          `;
 
       }
+
 
 
       if(author){
 
+
         headerHTML +=
-          `<p>
-            <strong>著者:</strong>
+
+          `
+
+          <p>
+
+            <strong>
+              著者:
+            </strong>
+
             ${escapeHtml(
               author.textContent.trim()
             )}
-          </p>`;
+
+          </p>
+
+          `;
 
       }
+
 
 
       if(date){
 
+
         headerHTML +=
-          `<p>
-            <strong>日付:</strong>
+
+          `
+
+          <p>
+
+            <strong>
+              日付:
+            </strong>
+
             ${escapeHtml(
               date.textContent.trim()
             )}
-          </p>`;
+
+          </p>
+
+          `;
 
       }
+
 
 
       if(publisher){
 
+
         headerHTML +=
-          `<p>
-            <strong>出版者:</strong>
+
+          `
+
+          <p>
+
+            <strong>
+              出版者:
+            </strong>
+
             ${escapeHtml(
               publisher.textContent.trim()
             )}
-          </p>`;
+
+          </p>
+
+          `;
 
       }
 
 
+
       headerDiv.innerHTML =
+
         headerHTML;
 
 
+
       output.appendChild(
+
         headerDiv
+
       );
+
 
     }
 
 
 
     /* ====================================
-       和歌単位
+       和歌
     ==================================== */
 
     const divElements =
+
       Array.from(
+
         doc.querySelectorAll(
+
           'div[type="waka"]'
+
         )
+
       );
 
 
+
     console.log(
+
       'Found divs:',
+
       divElements.length
+
     );
 
 
 
     divElements.forEach(
-      (divEl,idx) => {
+
+      divEl => {
 
 
         const wakaSection =
+
           document.createElement(
+
             'div'
+
           );
 
 
+
         wakaSection.className =
+
           'waka-section';
 
 
@@ -876,79 +1405,122 @@ function parseTEI(xmlText){
         -------------------------------- */
 
         const head =
+
           divEl.querySelector(
+
             'head'
+
           );
+
 
 
         if(head){
 
 
           const titleDiv =
+
             document.createElement(
+
               'div'
+
             );
+
 
 
           titleDiv.className =
+
             'section-title';
 
 
+
           const headText =
+
             head.textContent.trim();
 
 
+
           const headFacs =
+
             head.getAttribute(
+
               'facs'
+
             );
+
 
 
           const titleH4 =
+
             document.createElement(
+
               'h4'
+
             );
 
 
+
           titleH4.textContent =
+
             headText;
 
 
+
           titleDiv.appendChild(
+
             titleH4
+
           );
+
 
 
           if(headFacs){
 
 
             const btn =
+
               document.createElement(
+
                 'button'
+
               );
 
 
+
             btn.textContent =
+
               '全体画像を表示';
 
 
+
             btn.onclick =
+
               () =>
+
                 showFacsImage(
+
                   headFacs
+
                 );
 
 
+
             titleDiv.appendChild(
+
               btn
+
             );
+
 
           }
 
 
+
           wakaSection.appendChild(
+
             titleDiv
+
           );
+
 
         }
 
@@ -959,189 +1531,276 @@ function parseTEI(xmlText){
         -------------------------------- */
 
         const saidsInDiv =
+
           Array.from(
+
             divEl
+
               .getElementsByTagName(
+
                 'said'
+
               )
+
           );
-
-
-        console.log(
-          'Found saids:',
-          saidsInDiv.length
-        );
 
 
 
         const list =
+
           document.createElement(
+
             'ul'
+
           );
 
 
+
         list.className =
+
           'tei-list';
 
 
 
         saidsInDiv.forEach(
+
           said => {
 
 
             const who =
+
               said.getAttribute(
+
                 'who'
+
               );
+
 
 
             const toWhom =
+
               said.getAttribute(
+
                 'toWhom'
+
               );
 
 
 
-            /* ----------------------------
-               発話者
-            ---------------------------- */
+            /* 発話者 */
 
             if(who){
 
 
               if(
-                !nodeMap.has(who)
+
+                !nodeMap.has(
+
+                  who
+
+                )
+
               ){
 
+
                 nodeMap.set(
+
                   who,
+
                   {
+
                     id:who,
+
                     utteranceCount:0,
+
                     receivedCount:0
+
                   }
+
                 );
+
 
               }
 
 
+
               nodeMap
+
                 .get(who)
+
                 .utteranceCount++;
+
 
             }
 
 
 
-            /* ----------------------------
-               受け手
-            ---------------------------- */
+            /* 受け手 */
 
             if(toWhom){
 
 
               if(
-                !nodeMap.has(toWhom)
+
+                !nodeMap.has(
+
+                  toWhom
+
+                )
+
               ){
 
+
                 nodeMap.set(
+
                   toWhom,
+
                   {
+
                     id:toWhom,
+
                     utteranceCount:0,
+
                     receivedCount:0
+
                   }
+
                 );
+
 
               }
 
 
+
               nodeMap
+
                 .get(toWhom)
+
                 .receivedCount++;
 
+
             }
 
 
 
-            /* ----------------------------
-               リンク
-            ---------------------------- */
+            /* リンク */
 
             if(
+
               who &&
+
               toWhom
+
             ){
 
+
               rawLinks.push(
+
                 {
+
                   source:who,
+
                   target:toWhom
+
                 }
+
               );
+
 
             }
 
 
 
-            /* ----------------------------
-               テキスト表示
-            ---------------------------- */
+            /* テキスト表示 */
 
             const li =
+
               document.createElement(
+
                 'li'
+
               );
+
 
 
             li.className =
+
               'tei-item';
 
 
 
             const metaDiv =
+
               document.createElement(
+
                 'div'
+
               );
 
 
+
             metaDiv.className =
+
               'meta';
 
 
+
             metaDiv.innerHTML =
+
               `
-                発話者:
-                <a class='person'>
-                  ${escapeHtml(who)}
-                </a>
-                →
-                受け手:
-                <a class='person'>
-                  ${escapeHtml(toWhom)}
-                </a>
+
+              発話者:
+
+              <a class="person">
+
+                ${escapeHtml(who)}
+
+              </a>
+
+              →
+
+              受け手:
+
+              <a class="person">
+
+                ${escapeHtml(toWhom)}
+
+              </a>
+
               `;
 
 
+
             li.appendChild(
+
               metaDiv
+
             );
 
 
 
             const lg =
+
               said.querySelector(
+
                 'lg'
+
               );
+
 
 
             const lines =
+
               document.createElement(
+
                 'div'
+
               );
 
 
+
             lines.className =
+
               'lines';
 
 
@@ -1150,102 +1809,156 @@ function parseTEI(xmlText){
 
 
               lg
+
                 .querySelectorAll(
+
                   'l'
+
                 )
+
                 .forEach(
+
                   l => {
 
 
                     const lineDiv =
+
                       document
+
                         .createElement(
+
                           'div'
+
                         );
 
 
+
                     lineDiv.className =
+
                       'line';
 
 
+
                     lineDiv.textContent =
+
                       l.textContent.trim();
 
 
 
                     const facs =
+
                       l.getAttribute(
+
                         'facs'
+
                       );
+
 
 
                     if(facs){
 
 
                       const btn =
+
                         document
+
                           .createElement(
+
                             'button'
+
                           );
+
 
 
                       btn.textContent =
+
                         '画像を表示';
 
 
+
                       btn.style.marginLeft =
+
                         '8px';
 
 
+
                       btn.onclick =
+
                         () =>
+
                           showFacsImage(
+
                             facs
+
                           );
 
 
+
                       lineDiv.appendChild(
+
                         btn
+
                       );
+
 
                     }
 
 
+
                     lines.appendChild(
+
                       lineDiv
+
                     );
 
+
                   }
+
                 );
+
 
             }
 
 
+
             li.appendChild(
+
               lines
+
             );
+
 
 
             list.appendChild(
+
               li
+
             );
 
+
           }
+
         );
 
 
 
         wakaSection.appendChild(
+
           list
+
         );
 
 
+
         output.appendChild(
+
           wakaSection
+
         );
 
 
       }
+
     );
 
 
@@ -1255,158 +1968,221 @@ function parseTEI(xmlText){
     ==================================== */
 
     const linkMap =
+
       new Map();
 
 
+
     rawLinks.forEach(
+
       link => {
 
 
         const key =
+
           `${link.source}→${link.target}`;
 
 
+
         if(
-          !linkMap.has(key)
+
+          !linkMap.has(
+
+            key
+
+          )
+
         ){
 
+
           linkMap.set(
+
             key,
+
             {
+
               source:link.source,
+
               target:link.target,
+
               count:0
+
             }
+
           );
+
 
         }
 
 
+
         linkMap
+
           .get(key)
+
           .count++;
 
 
       }
+
     );
 
 
 
     const aggregatedLinks =
+
       Array.from(
+
         linkMap.values()
+
       );
 
 
 
     /* ====================================
        双方向判定
-       自己回帰は双方向にしない
     ==================================== */
 
     aggregatedLinks.forEach(
+
       link => {
 
 
         const reverseKey =
+
           `${link.target}→${link.source}`;
 
 
+
         link.bidirectional =
-          link.source !== link.target &&
+
+          link.source !== link.target
+
+          &&
+
           linkMap.has(
+
             reverseKey
+
           );
 
 
       }
+
     );
 
 
 
     const nodes =
+
       Array.from(
+
         nodeMap.values()
+
       );
 
 
 
     /* ====================================
-       統計表示
+       統計
     ==================================== */
 
     const statsDiv =
+
       document
+
         .getElementById(
+
           'networkStats'
+
         );
 
 
+
     statsDiv.style.display =
+
       'block';
 
 
 
     document
+
       .getElementById(
+
         'nodeCount'
+
       )
+
       .textContent =
+
       `登場人物数: ${nodes.length}人`;
 
 
 
     document
+
       .getElementById(
+
         'edgeCount'
+
       )
+
       .textContent =
+
       `総発話数: ${rawLinks.length}件`;
 
 
 
     document
+
       .getElementById(
+
         'uniqueEdgeCount'
+
       )
+
       .textContent =
+
       `ユニークな関係: ${aggregatedLinks.length}`;
 
 
 
-    console.log(
-      'Drawing network:',
-      nodes.length,
-      'nodes,',
-      aggregatedLinks.length,
-      'links'
-    );
-
-
-
     drawUtteranceNetwork(
+
       nodes,
+
       aggregatedLinks
+
     );
 
 
   }
+
   catch(e){
 
 
     console.error(
+
       'Parse error:',
+
       e
+
     );
 
 
     alert(
-      'エラーが発生しました: ' +
+
+      'エラーが発生しました: '
+
+      +
+
       e.message
+
     );
 
 
   }
+
 
 }
 
@@ -1420,104 +2196,142 @@ function showFacsImage(facs){
 
 
   const viewer =
+
     document
+
       .getElementById(
+
         'imageViewer'
+
       );
 
 
+
   viewer.innerHTML =
+
     '<p style="color:#64748b">画像を読み込んでいます...</p>';
 
 
 
   const baseUrl =
+
     document
+
       .getElementById(
+
         'baseUrl'
+
       )
+
       .value
+
       .trim();
 
 
 
-  /* --------------------------------------
-     URLが直接指定されている場合
-  -------------------------------------- */
-
   if(
+
     /^https?:\/\//i.test(
+
       facs
+
     )
+
   ){
 
 
     const img =
+
       document.createElement(
+
         'img'
+
       );
 
 
+
     img.src =
+
       facs;
 
 
+
     viewer.innerHTML =
+
       '';
 
 
+
     viewer.appendChild(
+
       img
+
     );
 
 
+
     return;
+
 
   }
 
 
 
-  /* --------------------------------------
-     #ID指定
-  -------------------------------------- */
-
   const idMatch =
+
     facs.match(
+
       /^#(.+)$/
+
     );
 
 
+
   if(
+
     idMatch &&
+
     currentTEIDoc
+
   ){
 
 
     const id =
+
       idMatch[1];
 
 
 
     const xpathResult =
+
       currentTEIDoc.evaluate(
+
 
         `//*[@*[local-name()='id']='${id}']`,
 
+
         currentTEIDoc,
+
 
         null,
 
+
         XPathResult
+
           .FIRST_ORDERED_NODE_TYPE,
 
+
         null
+
 
       );
 
 
 
     const element =
+
       xpathResult
+
         .singleNodeValue;
 
 
@@ -1526,23 +2340,29 @@ function showFacsImage(facs){
 
 
 
-      /* ----------------------------------
-         surface
-      ---------------------------------- */
-
       if(
+
         element
+
           .tagName
+
           .toLowerCase()
+
         ===
+
         'surface'
+
       ){
 
 
         const graphic =
+
           element
+
             .getElementsByTagName(
+
               'graphic'
+
             )[0];
 
 
@@ -1551,153 +2371,215 @@ function showFacsImage(facs){
 
 
           const url =
+
             graphic
+
               .getAttribute(
+
                 'url'
+
               );
+
 
 
           if(url){
 
 
             const img =
+
               document
+
                 .createElement(
+
                   'img'
+
                 );
 
 
+
             img.src =
+
               url;
 
 
+
             img.onerror =
+
               () => {
 
+
                 viewer.innerHTML =
+
                   '<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';
+
 
               };
 
 
+
             viewer.innerHTML =
+
               '';
 
 
+
             viewer.appendChild(
+
               img
+
             );
+
 
 
             return;
 
+
           }
+
 
         }
 
 
 
         const sameAs =
+
           element
+
             .getAttribute(
+
               'sameAs'
+
             );
+
 
 
         if(sameAs){
 
 
           const img =
+
             document
+
               .createElement(
+
                 'img'
+
               );
 
 
+
           img.src =
+
             sameAs;
 
 
-          img.onerror =
-            () => {
-
-              viewer.innerHTML =
-                '<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';
-
-            };
-
 
           viewer.innerHTML =
+
             '';
 
 
+
           viewer.appendChild(
+
             img
+
           );
+
 
 
           return;
 
+
         }
+
 
       }
 
 
 
-      /* ----------------------------------
-         zone
-      ---------------------------------- */
-
       if(
+
         element
+
           .tagName
+
           .toLowerCase()
+
         ===
+
         'zone'
+
       ){
 
 
         const ulx =
+
           element.getAttribute(
+
             'ulx'
+
           );
+
 
 
         const uly =
+
           element.getAttribute(
+
             'uly'
+
           );
+
 
 
         const lrx =
+
           element.getAttribute(
+
             'lrx'
+
           );
 
 
+
         const lry =
+
           element.getAttribute(
+
             'lry'
+
           );
 
 
 
         let surface =
+
           element.parentElement;
 
 
 
         while(
+
           surface &&
+
           surface
+
             .tagName
+
             .toLowerCase()
+
           !==
+
           'surface'
+
         ){
 
+
           surface =
+
             surface.parentElement;
+
 
         }
 
@@ -1707,9 +2589,13 @@ function showFacsImage(facs){
 
 
           const graphic =
+
             surface
+
               .getElementsByTagName(
+
                 'graphic'
+
               )[0];
 
 
@@ -1718,9 +2604,13 @@ function showFacsImage(facs){
 
 
             const url =
+
               graphic
+
                 .getAttribute(
+
                   'url'
+
                 );
 
 
@@ -1729,112 +2619,154 @@ function showFacsImage(facs){
 
 
               let finalUrl =
+
                 url;
 
 
 
               const iiifMatch =
+
                 url.match(
+
                   /^(.+\.tiff)\/full\/full\/0\/default\.jpg$/i
+
                 );
 
 
 
               if(
+
                 iiifMatch &&
+
                 ulx &&
+
                 uly &&
+
                 lrx &&
+
                 lry
+
               ){
 
 
                 const baseTiff =
+
                   iiifMatch[1];
 
 
+
                 const width =
-                  parseInt(lrx) -
+
+                  parseInt(lrx)
+
+                  -
+
                   parseInt(ulx);
 
 
+
                 const height =
-                  parseInt(lry) -
+
+                  parseInt(lry)
+
+                  -
+
                   parseInt(uly);
 
 
+
                 const region =
+
                   `${ulx},${uly},${width},${height}`;
 
 
+
                 finalUrl =
+
                   `${baseTiff}/${region}/full/0/default.jpg`;
+
 
               }
 
 
 
               const img =
+
                 document
+
                   .createElement(
+
                     'img'
+
                   );
 
 
+
               img.src =
+
                 finalUrl;
 
 
-              img.onerror =
-                () => {
-
-                  viewer.innerHTML =
-                    '<p style="color:#ef4444">画像の読み込みに失敗しました。</p>';
-
-                };
-
 
               viewer.innerHTML =
+
                 '';
 
 
+
               viewer.appendChild(
+
                 img
+
               );
+
 
 
               return;
 
+
             }
+
 
           }
 
+
         }
+
 
       }
 
 
 
-      /* ----------------------------------
-         graphic
-      ---------------------------------- */
-
       if(
+
         element
+
           .tagName
+
           .toLowerCase()
+
         ===
+
         'graphic'
+
       ){
 
 
         const url =
+
           element.getAttribute(
+
             'url'
+
           )
+
           ||
+
           element.getAttribute(
+
             'href'
+
           );
 
 
@@ -1843,86 +2775,123 @@ function showFacsImage(facs){
 
 
           const img =
+
             document
+
               .createElement(
+
                 'img'
+
               );
 
 
+
           img.src =
+
             url;
 
 
+
           viewer.innerHTML =
+
             '';
 
 
+
           viewer.appendChild(
+
             img
+
           );
+
 
 
           return;
 
+
         }
 
+
       }
+
 
     }
 
 
-
-    /* ------------------------------------
-       baseURL
-    ------------------------------------ */
 
     if(baseUrl){
 
 
       const attempt =
+
         baseUrl.replace(
+
           /\/$/,
+
           ''
+
         )
+
         +
+
         '/'
+
         +
+
         id
+
         +
+
         '.jpg';
 
 
 
       const img =
+
         document
+
           .createElement(
+
             'img'
+
           );
 
 
+
       img.src =
+
         attempt;
 
 
+
       viewer.innerHTML =
+
         '';
 
 
+
       viewer.appendChild(
+
         img
+
       );
+
 
 
       return;
 
+
     }
+
 
   }
 
 
 
   viewer.innerHTML =
+
     '<p style="color:#ef4444">画像が見つかりませんでした。</p>';
+
 
 }
 
@@ -1933,42 +2902,58 @@ function showFacsImage(facs){
 ======================================== */
 
 function drawUtteranceNetwork(
+
   nodes,
+
   links
+
 ){
 
 
   if(
+
     nodes.length === 0
+
   ){
 
+
     return;
+
 
   }
 
 
 
   const graphEl =
+
     document
+
       .getElementById(
+
         'graph'
+
       );
 
 
 
   const width =
+
     graphEl.clientWidth;
 
 
 
   const height =
+
     window.innerWidth <= 768
+
       ? 400
+
       : 500;
 
 
 
   const isMobile =
+
     window.innerWidth <= 768;
 
 
@@ -1978,52 +2963,88 @@ function drawUtteranceNetwork(
   ==================================== */
 
   const svg =
+
     d3
+
       .select(
+
         '#graph'
+
       )
+
       .html(
+
         ''
+
       )
+
       .append(
+
         'svg'
+
       )
+
       .attr(
+
         'width',
+
         width
+
       )
+
       .attr(
+
         'height',
+
         height
+
       );
 
 
 
   const container =
+
     svg.append(
+
       'g'
+
     );
 
 
 
   svg.call(
 
+
     d3
+
       .zoom()
+
       .scaleExtent(
+
         [0.1,4]
+
       )
+
       .on(
+
         'zoom',
+
         e => {
 
+
           container.attr(
+
             'transform',
+
             e.transform
+
           );
 
+
         }
+
       )
+
 
   );
 
@@ -2034,43 +3055,68 @@ function drawUtteranceNetwork(
   ==================================== */
 
   const maxUtterance =
+
     d3.max(
+
       nodes,
+
       d => d.utteranceCount
+
     )
+
     ||
+
     1;
 
 
 
   const radiusScale =
+
     d3
+
       .scaleSqrt()
+
       .domain(
+
         [
+
           0,
+
           maxUtterance
+
         ]
+
       )
+
       .range(
+
         isMobile
+
           ? [8,25]
+
           : [12,35]
+
       );
 
 
 
   /* ====================================
      線の太さ
-     回数が多いほど太くする
+     回数が多いほど太い
   ==================================== */
 
   const maxCount =
+
     d3.max(
+
       links,
+
       d => d.count
+
     )
+
     ||
+
     1;
 
 
@@ -2079,28 +3125,37 @@ function drawUtteranceNetwork(
 
     maxCount > 1
 
-      ?
+    ?
 
-      d3
-        .scaleSqrt()
-        .domain(
-          [
-            1,
-            maxCount
-          ]
-        )
-        .range(
-          isMobile
-            ? [1.5,7]
-            : [2,10]
-        )
+    d3
 
-      :
+      .scaleSqrt()
 
-      () =>
+      .domain(
+
+        [
+
+          1,
+
+          maxCount
+
+        ]
+
+      )
+
+      .range(
+
         isMobile
-          ? 2
-          : 2.5;
+
+          ? [1.5,7]
+
+          : [2,10]
+
+      )
+
+    :
+
+    () => 2.5;
 
 
 
@@ -2109,47 +3164,71 @@ function drawUtteranceNetwork(
   ==================================== */
 
   const sim =
+
     d3
+
       .forceSimulation(
+
         nodes
+
       )
+
 
 
       .force(
 
+
         'link',
 
+
         d3
+
           .forceLink(
+
             links
+
           )
+
           .id(
+
             d => d.id
+
           )
+
           .distance(
+
             d => {
 
 
               const sourceId =
+
                 typeof d.source === 'object'
+
                   ? d.source.id
+
                   : d.source;
 
 
+
               const targetId =
+
                 typeof d.target === 'object'
+
                   ? d.target.id
+
                   : d.target;
 
 
 
               if(
+
                 sourceId === targetId
+
               ){
 
-                return isMobile
-                  ? 70
-                  : 90;
+
+                return 90;
+
 
               }
 
@@ -2157,195 +3236,337 @@ function drawUtteranceNetwork(
 
               return d.bidirectional
 
-                ? (
-                    isMobile
-                      ? 110
-                      : 145
-                  )
+                ? 145
 
-                : (
-                    isMobile
-                      ? 95
-                      : 125
-                  );
+                : 125;
+
 
             }
+
           )
+
 
       )
 
 
+
       .force(
+
 
         'charge',
 
+
         d3
+
           .forceManyBody()
+
           .strength(
+
             isMobile
+
               ? -300
+
               : -500
+
           )
+
 
       )
 
 
+
       .force(
+
 
         'center',
 
-        d3
-          .forceCenter(
-            width / 2,
-            height / 2
-          )
+
+        d3.forceCenter(
+
+          width / 2,
+
+          height / 2
+
+        )
+
 
       )
 
 
+
       .force(
+
 
         'collision',
 
+
         d3
+
           .forceCollide()
+
           .radius(
+
             d =>
+
               radiusScale(
+
                 d.utteranceCount
+
               )
+
               +
+
               14
+
           )
+
 
       );
 
 
 
   /* ====================================
-     矢印マーカー
+     矢印
+     ★大きさを完全固定
   ==================================== */
 
   const defs =
+
     svg.append(
+
       'defs'
+
     );
 
 
 
   defs
+
     .append(
+
       'marker'
+
     )
+
     .attr(
+
       'id',
+
       'arrow'
+
     )
+
     .attr(
+
       'viewBox',
+
       '0 -5 10 10'
+
     )
+
     .attr(
+
       'refX',
+
       9
+
     )
+
     .attr(
+
       'refY',
+
       0
+
     )
+
     .attr(
+
       'markerWidth',
-      6
+
+      8
+
     )
+
     .attr(
+
       'markerHeight',
-      6
+
+      8
+
     )
+
     .attr(
+
       'orient',
+
       'auto'
+
     )
+
+
+    /*
+
+      重要：
+
+      strokeWidth ではなく
+      userSpaceOnUse にする。
+
+      これによって
+      線が太くなっても
+      矢印自体は大きくならない。
+
+    */
+
     .attr(
+
       'markerUnits',
-      'strokeWidth'
+
+      'userSpaceOnUse'
+
     )
+
     .append(
+
       'path'
+
     )
+
     .attr(
+
       'd',
+
       'M0,-5L10,0L0,5'
+
     )
+
     .attr(
+
       'fill',
+
       '#3b82f6'
+
     );
 
 
 
   /* ====================================
-     リンク描画
+     リンク
   ==================================== */
 
   const link =
+
     container
+
       .selectAll(
+
         'path.link'
+
       )
+
       .data(
+
         links
+
       )
+
       .enter()
+
       .append(
+
         'path'
+
       )
+
       .attr(
+
         'class',
+
         'link'
+
       )
+
       .attr(
+
         'stroke',
+
         '#3b82f6'
+
       )
+
       .attr(
+
         'stroke-width',
+
         d =>
+
           strokeScale(
+
             d.count
+
           )
+
       )
+
       .attr(
+
         'fill',
+
         'none'
+
       )
+
       .attr(
+
         'marker-end',
+
         'url(#arrow)'
+
       )
+
       .attr(
+
         'opacity',
+
         0.72
+
       )
+
 
 
       .on(
+
         'mouseover',
+
         function(e,d){
 
 
           d3
+
             .select(this)
+
             .attr(
+
               'opacity',
+
               1
+
             )
+
             .attr(
+
               'stroke-width',
+
               strokeScale(
+
                 d.count
+
               )
+
               +
+
               2
+
             );
 
 
@@ -2357,583 +3578,994 @@ function drawUtteranceNetwork(
 
 
           if(
+
             d.source.id ===
+
             d.target.id
+
           ){
 
 
             tooltipX =
+
               d.source.x;
 
 
+
             tooltipY =
+
               d.source.y
+
               -
-              radiusScale(
-                d.source
-                  .utteranceCount
-              )
-              -
-              58;
+
+              75;
 
 
           }
+
           else{
 
 
             tooltipX =
+
               (
-                d.source.x +
+
+                d.source.x
+
+                +
+
                 d.target.x
+
               )
+
               /
+
               2;
+
 
 
             tooltipY =
+
               (
-                d.source.y +
+
+                d.source.y
+
+                +
+
                 d.target.y
+
               )
+
               /
+
               2;
+
 
           }
 
 
 
           const tooltip =
+
             container
+
               .append(
+
                 'g'
+
               )
+
               .attr(
+
                 'class',
+
                 'edge-tooltip'
+
               );
 
 
 
           tooltip
+
             .append(
+
               'rect'
+
             )
+
             .attr(
+
               'x',
+
               tooltipX - 42
+
             )
+
             .attr(
+
               'y',
+
               tooltipY - 20
+
             )
+
             .attr(
+
               'width',
+
               84
+
             )
+
             .attr(
+
               'height',
+
               26
+
             )
+
             .attr(
+
               'fill',
+
               'white'
+
             )
+
             .attr(
+
               'stroke',
+
               '#3b82f6'
+
             )
+
             .attr(
+
               'stroke-width',
+
               1.5
+
             )
+
             .attr(
+
               'rx',
+
               4
+
             );
 
 
 
           tooltip
+
             .append(
+
               'text'
+
             )
+
             .attr(
+
               'x',
+
               tooltipX
+
             )
+
             .attr(
+
               'y',
+
               tooltipY - 3
+
             )
+
             .attr(
+
               'text-anchor',
+
               'middle'
+
             )
+
             .attr(
+
               'font-size',
+
               11
+
             )
+
             .attr(
+
               'font-weight',
+
               'bold'
+
             )
+
             .attr(
+
               'fill',
+
               '#1e293b'
+
             )
+
             .text(
+
               `回数: ${d.count}回`
+
             );
 
+
         }
+
       )
 
 
+
       .on(
+
         'mouseout',
+
         function(e,d){
 
 
           d3
+
             .select(this)
+
             .attr(
+
               'opacity',
+
               0.72
+
             )
+
             .attr(
+
               'stroke-width',
+
               strokeScale(
+
                 d.count
+
               )
+
             );
 
 
+
           container
+
             .selectAll(
+
               '.edge-tooltip'
+
             )
+
             .remove();
 
+
         }
+
       );
 
 
 
   /* ====================================
-     ノード描画
+     ノード
   ==================================== */
 
   const node =
+
     container
+
       .selectAll(
+
         'circle.node'
+
       )
+
       .data(
+
         nodes
+
       )
+
       .enter()
+
       .append(
+
         'circle'
+
       )
+
       .attr(
+
         'class',
+
         'node'
+
       )
+
       .attr(
+
         'r',
+
         d =>
+
           radiusScale(
+
             d.utteranceCount
+
           )
+
       )
+
       .attr(
+
         'fill',
+
         '#60a5fa'
+
       )
+
       .attr(
+
         'stroke',
+
         '#1e40af'
+
       )
+
       .attr(
+
         'stroke-width',
+
         2
+
       )
 
 
 
       .call(
 
+
         d3
+
           .drag()
 
 
+
           .on(
+
             'start',
+
             e => {
 
 
               if(
+
                 !e.active
+
               ){
 
+
                 sim
+
                   .alphaTarget(
+
                     0.3
+
                   )
+
                   .restart();
+
 
               }
 
 
+
               e.subject.fx =
+
                 e.subject.x;
 
 
+
               e.subject.fy =
+
                 e.subject.y;
 
+
             }
+
           )
 
 
+
           .on(
+
             'drag',
+
             e => {
 
 
               e.subject.fx =
+
                 e.x;
 
 
+
               e.subject.fy =
+
                 e.y;
 
+
             }
+
           )
 
 
+
           .on(
+
             'end',
+
             e => {
 
 
               if(
+
                 !e.active
+
               ){
 
+
                 sim.alphaTarget(
+
                   0
+
                 );
+
 
               }
 
 
+
               e.subject.fx =
+
                 null;
+
 
 
               e.subject.fy =
+
                 null;
 
+
             }
+
           )
+
 
       )
 
 
 
       .on(
+
         'mouseover',
+
         function(e,d){
 
 
           d3
+
             .select(this)
+
             .attr(
+
               'fill',
+
               '#3b82f6'
+
             )
+
             .attr(
+
               'stroke-width',
+
               3
+
             );
 
 
 
           const boxWidth =
+
             isMobile
+
               ? 105
+
               : 125;
 
 
 
           const boxHeight =
+
             isMobile
+
               ? 42
+
               : 50;
 
 
 
           const boxX =
-            d.x -
+
+            d.x
+
+            -
+
             boxWidth / 2;
 
 
 
           const boxY =
+
             d.y
+
             -
+
             radiusScale(
+
               d.utteranceCount
+
             )
+
             -
-            (
-              isMobile
-                ? 54
-                : 62
-            );
+
+            62;
 
 
 
           const tooltip =
+
             container
+
               .append(
+
                 'g'
+
               )
+
               .attr(
+
                 'class',
+
                 'node-tooltip'
+
               );
 
 
 
           tooltip
+
             .append(
+
               'rect'
+
             )
+
             .attr(
+
               'x',
+
               boxX
+
             )
+
             .attr(
+
               'y',
+
               boxY
+
             )
+
             .attr(
+
               'width',
+
               boxWidth
+
             )
+
             .attr(
+
               'height',
+
               boxHeight
+
             )
+
             .attr(
+
               'fill',
+
               'white'
+
             )
+
             .attr(
+
               'stroke',
+
               '#1e293b'
+
             )
+
             .attr(
+
               'stroke-width',
+
               1.5
+
             )
+
             .attr(
+
               'rx',
+
               6
+
             );
 
 
 
           tooltip
+
             .append(
+
               'text'
+
             )
+
             .attr(
+
               'x',
+
               d.x
+
             )
+
             .attr(
+
               'y',
+
               boxY + 15
+
             )
+
             .attr(
+
               'text-anchor',
+
               'middle'
+
             )
+
             .attr(
+
               'font-size',
-              isMobile
-                ? 10
-                : 11
+
+              11
+
             )
+
             .attr(
+
               'font-weight',
+
               'bold'
+
             )
+
             .attr(
+
               'fill',
+
               '#1e293b'
+
             )
+
             .text(
+
               d.id
+
             );
 
 
 
           tooltip
+
             .append(
+
               'text'
+
             )
+
             .attr(
+
               'x',
+
               d.x
+
             )
+
             .attr(
+
               'y',
+
               boxY + 29
+
             )
+
             .attr(
+
               'text-anchor',
+
               'middle'
+
             )
+
             .attr(
+
               'font-size',
-              isMobile
-                ? 9
-                : 10
+
+              10
+
             )
+
             .attr(
+
               'fill',
+
               '#059669'
+
             )
+
             .text(
+
               `送信: ${d.utteranceCount}回`
+
             );
 
 
 
           if(
+
             !isMobile
+
           ){
 
 
             tooltip
+
               .append(
+
                 'text'
+
               )
+
               .attr(
+
                 'x',
+
                 d.x
+
               )
+
               .attr(
+
                 'y',
+
                 boxY + 42
+
               )
+
               .attr(
+
                 'text-anchor',
+
                 'middle'
+
               )
+
               .attr(
+
                 'font-size',
+
                 10
+
               )
+
               .attr(
+
                 'fill',
+
                 '#dc2626'
+
               )
+
               .text(
+
                 `受信: ${d.receivedCount}回`
+
               );
+
 
           }
 
+
         }
+
       )
 
 
 
       .on(
+
         'mouseout',
+
         function(){
 
 
           d3
+
             .select(this)
+
             .attr(
+
               'fill',
+
               '#60a5fa'
+
             )
+
             .attr(
+
               'stroke-width',
+
               2
+
             );
 
 
+
           container
+
             .selectAll(
+
               '.node-tooltip'
+
             )
+
             .remove();
 
+
         }
+
       );
 
 
 
   /* ====================================
-     人物名ラベル
+     人物名
   ==================================== */
 
   const label =
+
     container
+
       .selectAll(
+
         'text.label'
+
       )
+
       .data(
+
         nodes
+
       )
+
       .enter()
+
       .append(
+
         'text'
+
       )
+
       .attr(
+
         'class',
+
         'label'
+
       )
+
       .text(
+
         d => d.id
+
       )
+
       .attr(
+
         'font-size',
+
         d =>
+
           Math.max(
+
             isMobile
+
               ? 9
+
               : 11,
+
             radiusScale(
+
               d.utteranceCount
+
             )
+
             *
+
             0.5
+
           )
+
       )
+
       .attr(
+
         'font-weight',
+
         'bold'
+
       )
+
       .attr(
+
         'fill',
+
         '#1e293b'
+
       )
+
       .attr(
+
         'text-anchor',
+
         'middle'
+
       )
+
       .attr(
+
         'pointer-events',
+
         'none'
+
       );
 
 
@@ -2946,89 +4578,115 @@ function drawUtteranceNetwork(
 
 
     const source =
+
       d.source;
 
 
+
     const target =
+
       d.target;
 
 
 
     /* ==================================
-       同一人物への発話
-       自己回帰ループ
+       自己回帰
+       ★ループサイズ固定
     ================================== */
 
     if(
+
       source.id ===
+
       target.id
+
     ){
 
 
       const x =
+
         source.x;
 
 
+
       const y =
+
         source.y;
 
 
 
       const nodeRadius =
+
         radiusScale(
+
           source.utteranceCount
+
         );
 
 
 
       /*
-       * ループをノードの上側に描画
+       * ループ自体の大きさは
+       * すべて共通
        */
-      const loopWidth =
-        nodeRadius + 32;
+
+      const loopWidth = 40;
 
 
-
-      const loopHeight =
-        nodeRadius + 45;
+      const loopHeight = 50;
 
 
 
       /*
        * ノード右上から開始
        */
+
       const startX =
-        x +
-        nodeRadius *
-        0.68;
+
+        x
+
+        +
+
+        nodeRadius * 0.65;
 
 
 
       const startY =
-        y -
-        nodeRadius *
-        0.72;
+
+        y
+
+        -
+
+        nodeRadius * 0.65;
 
 
 
       /*
        * ノード左上へ戻る
        */
+
       const endX =
-        x -
-        nodeRadius *
-        0.68;
+
+        x
+
+        -
+
+        nodeRadius * 0.65;
 
 
 
       const endY =
-        y -
-        nodeRadius *
-        0.72;
+
+        y
+
+        -
+
+        nodeRadius * 0.65;
 
 
 
       return `
+
         M
         ${startX},
         ${startY}
@@ -3042,7 +4700,9 @@ function drawUtteranceNetwork(
 
         ${endX},
         ${endY}
+
       `;
+
 
     }
 
@@ -3053,177 +4713,248 @@ function drawUtteranceNetwork(
     ================================== */
 
     const dx =
-      target.x -
+
+      target.x
+
+      -
+
       source.x;
 
 
+
     const dy =
-      target.y -
+
+      target.y
+
+      -
+
       source.y;
 
 
 
     const dist =
+
       Math.sqrt(
-        dx * dx +
+
+        dx * dx
+
+        +
+
         dy * dy
+
       );
 
 
 
     if(
+
       dist === 0
+
     ){
 
+
       return '';
+
 
     }
 
 
 
     const sourceRadius =
+
       radiusScale(
+
         source.utteranceCount
+
       );
 
 
 
     const targetRadius =
+
       radiusScale(
+
         target.utteranceCount
+
       );
 
 
 
-    /*
-     * 発話元ノードの外周から開始
-     */
     const startRatio =
-      sourceRadius /
+
+      sourceRadius
+
+      /
+
       dist;
 
 
 
     const startX =
-      source.x +
-      dx *
-      startRatio;
+
+      source.x
+
+      +
+
+      dx * startRatio;
 
 
 
     const startY =
-      source.y +
-      dy *
-      startRatio;
+
+      source.y
+
+      +
+
+      dy * startRatio;
 
 
 
-    /*
-     * 発話先ノードの少し手前で終了
-     * 矢印がノードに埋もれないようにする
-     */
-    const markerOffset =
-      8;
+    const markerOffset = 8;
 
 
 
     const endRatio =
+
       (
+
         dist
+
         -
+
         targetRadius
+
         -
+
         markerOffset
+
       )
+
       /
+
       dist;
 
 
 
     const endX =
-      source.x +
-      dx *
-      endRatio;
+
+      source.x
+
+      +
+
+      dx * endRatio;
 
 
 
     const endY =
-      source.y +
-      dy *
-      endRatio;
+
+      source.y
+
+      +
+
+      dy * endRatio;
 
 
 
     /* ==================================
-       双方向
-       曲線として分離
+       双方向リンク
     ================================== */
 
     if(
+
       d.bidirectional
+
     ){
 
 
       const midX =
+
         (
-          source.x +
+
+          source.x
+
+          +
+
           target.x
+
         )
+
         /
+
         2;
 
 
 
       const midY =
+
         (
-          source.y +
+
+          source.y
+
+          +
+
           target.y
+
         )
+
         /
+
         2;
 
 
 
       const perpX =
-        -dy /
+
+        -dy
+
+        /
+
         dist;
 
 
 
       const perpY =
-        dx /
+
+        dx
+
+        /
+
         dist;
 
 
 
-      /*
-       * A→B と B→A では
-       * dx,dy が反転するため、
-       * 同じ正の値を使うことで
-       * 自然に反対方向へ曲がる
-       */
       const curveOffset =
+
         isMobile
+
           ? 22
+
           : 30;
 
 
 
       const controlX =
-        midX +
-        perpX *
-        curveOffset;
+
+        midX
+
+        +
+
+        perpX * curveOffset;
 
 
 
       const controlY =
-        midY +
-        perpY *
-        curveOffset;
+
+        midY
+
+        +
+
+        perpY * curveOffset;
 
 
 
       return `
+
         M
         ${startX},
         ${startY}
@@ -3234,7 +4965,9 @@ function drawUtteranceNetwork(
 
         ${endX},
         ${endY}
+
       `;
+
 
     }
 
@@ -3245,6 +4978,7 @@ function drawUtteranceNetwork(
     ================================== */
 
     return `
+
       M
       ${startX},
       ${startY}
@@ -3252,53 +4986,78 @@ function drawUtteranceNetwork(
       L
       ${endX},
       ${endY}
+
     `;
+
 
   }
 
 
 
   /* ====================================
-     Tick更新
+     更新
   ==================================== */
 
   sim.on(
+
     'tick',
+
     () => {
 
 
       link.attr(
+
         'd',
+
         d =>
+
           drawEdge(d)
+
       );
 
 
 
       node
+
         .attr(
+
           'cx',
+
           d => d.x
+
         )
+
         .attr(
+
           'cy',
+
           d => d.y
+
         );
 
 
 
       label
+
         .attr(
+
           'x',
+
           d => d.x
+
         )
+
         .attr(
+
           'y',
+
           d => d.y + 5
+
         );
 
 
     }
+
   );
 
 
@@ -3309,4 +5068,5 @@ function drawUtteranceNetwork(
 
 
 </body>
+
 </html>
